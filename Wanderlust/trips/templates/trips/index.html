@@ -1,0 +1,23 @@
+{%  extends 'trips/base.html' %}
+
+{%  block body %}
+
+    <div>
+        <ul>
+            {% for trip in all_trips %}
+                 <li>
+                     <a href = "{% url 'trips:detail' trip.id %}"> {{ trip.name }}</a>
+                     <p>from: {{ trip.origin  }} - to: {{ trip.destination  }}</p>
+                     <p>from: {{ trip.departing_date  }} - to: {{ trip.returning_date  }}</p>
+                     <p>Type of transportation: {{ trip.get_transportstion_display }} </p>
+                     <p>Total cost per persons: {{ trip.price }} L.E</p>
+                 <br>
+                 </li>
+            {%  endfor %}
+        </ul>
+
+    </div>
+
+
+
+{%  endblock %}
