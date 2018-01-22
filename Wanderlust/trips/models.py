@@ -1,7 +1,9 @@
 from django.db import models
 from django.core.urlresolvers import reverse
-from django.forms import ModelForm
-
+from django.forms import ModelForm, forms
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login, authenticate
 
 trans_Choices = (
     ('B','Bus'), ('T','Train'), ('P','Plane'), ('S','Ship')
@@ -31,3 +33,14 @@ class Trip(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Question(models.Model):
+    Q_content = models.CharField(max_length=500)
+    trip = models.ForeignKey(Trip, related_name='question', on_delete= models.CASCADE )
+    asked_by = models.ForeignKey(User, related_name='question')
+    asked_at = models.DateTimeField(auto_now_add= True)
+
+    def __str__(self):
+        return self.Q_content
+
