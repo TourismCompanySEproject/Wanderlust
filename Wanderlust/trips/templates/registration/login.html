@@ -1,0 +1,17 @@
+{%  extends 'trips/base.html' %}
+<title>{% block title %}Log in{% endblock %}</title>
+
+{%  block body %}
+
+     <h3 class="card-title">Log in</h3>
+            <form method="post" novalidate>
+                {%  csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary btn-block">log in</button>
+            </form>
+
+
+
+
+
+{%  endblock %}

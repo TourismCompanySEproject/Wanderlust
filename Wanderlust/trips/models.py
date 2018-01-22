@@ -4,6 +4,8 @@ from django.forms import ModelForm, forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
+from django.db.models import Count
+
 
 trans_Choices = (
     ('B','Bus'), ('T','Train'), ('P','Plane'), ('S','Ship')
@@ -27,9 +29,16 @@ class Trip(models.Model):
 
     price = models.PositiveSmallIntegerField()
 
+    capacity = models.PositiveSmallIntegerField(default=0)
+
+    reservation = models.ManyToManyField(User)
+
+
     def get_absolute_url(self):
         return reverse('trips:detial', kwargs={'pk': self.pk})
 
+    def get_no_of_reservation(self):
+        return User.objects.filter(pk = self.pk).count()
 
     def __str__(self):
         return self.name
@@ -37,10 +46,9 @@ class Trip(models.Model):
 
 class Question(models.Model):
     Q_content = models.CharField(max_length=500)
-    trip = models.ForeignKey(Trip, related_name='question', on_delete= models.CASCADE )
-    asked_by = models.ForeignKey(User, related_name='question')
+    Q_trip = models.ForeignKey(Trip, related_name='question', on_delete= models.CASCADE)
+    asked_by = models.ForeignKey(User, related_name='question', on_delete= models.CASCADE)
     asked_at = models.DateTimeField(auto_now_add= True)
 
     def __str__(self):
         return self.Q_content
-
