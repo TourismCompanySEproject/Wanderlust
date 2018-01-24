@@ -3,8 +3,8 @@ from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from .models import Trip
-from .forms import SignUpForm, LogInForm
-from django.views.generic import View
+from .forms import SignUpForm
+from django.contrib.auth import login as auth_login
 
 class IndexView(generic.ListView):
     template_name = 'trips/index.html'
@@ -52,27 +52,3 @@ class TripDelete(DeleteView):
     model = Trip
     success_url = reverse_lazy('trips:index')
 
-
-class UserFormView(View):
-    form_class = LogInForm
-    template_name = 'registeration/login.html'
-
-    # display a blank form
-    def get(self, request):
-        form = self.form_class(None)
-        return render(request, self.template_name, {'form':form})
-
-    #process form data
-    def post(self, request):
-        form =  self.form_class(request.POST)
-
-        if form.is_valid():
-            #returns User objects if credentials are correct
-            user = authenticate(username= username, password=password)
-
-            if user is not None:
-                if user.is_active:
-                    login(request, user)
-                    return redirect('trips:index')
-
-        return render(request, self.template_name, {'form': form})
