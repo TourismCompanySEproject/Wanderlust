@@ -38,7 +38,7 @@ class TripCreate(CreateView):
     fields = ['name', 'origin', 'destination',
             'departing_date', 'returning_date',
             'transportstion', 'residence',
-            'price' ,'capacity']
+            'adult_price' ,'kid_price', 'capacity']
 
 
 class TripUpdate(UpdateView):
@@ -46,7 +46,7 @@ class TripUpdate(UpdateView):
     fields = ['name', 'origin', 'destination',
             'departing_date', 'returning_date',
             'transportstion', 'residence',
-            'price' ,'capacity']
+            'adult_price' ,'kid_price' ,'capacity']
 
 class TripDelete(DeleteView):
     model = Trip
