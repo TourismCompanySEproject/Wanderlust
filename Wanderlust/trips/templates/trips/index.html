@@ -5,6 +5,7 @@
     <div>
         <ul>
             {% for trip in all_trips %}
+                {%  if trip.check_time %}
                  <li>
                      <a href = "{% url 'trips:detail' trip.id %}"> {{ trip.name }}</a>
                      <p>from: {{ trip.origin  }} - to: {{ trip.destination  }}</p>
@@ -14,6 +15,7 @@
                      <p>Total cost per persons: {{ trip.price }} L.E</p>
                  <br>
                  </li>
+                {% endif %}
             {%  endfor %}
         </ul>
 

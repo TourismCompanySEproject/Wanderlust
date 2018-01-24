@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
 from django.db.models import Count
-
+from datetime import datetime, timezone, date
 
 trans_Choices = (
     ('B','Bus'), ('T','Train'), ('P','Plane'), ('S','Ship')
@@ -24,15 +24,19 @@ class Trip(models.Model):
     departing_date = models.DateField()
     returning_date = models.DateField()
 
-    transportstion = models.CharField(max_length=10, choices= trans_Choices)
-    residence = models.CharField(max_length=20, choices= residence_Choices)
+    transportstion = models.CharField(max_length=10, choices=trans_Choices)
+    residence = models.CharField(max_length=20, choices=residence_Choices)
 
-    price = models.PositiveSmallIntegerField()
+    adult_price = models.PositiveSmallIntegerField(default=0)
+    kid_price = models.PositiveSmallIntegerField(default=0)
 
     capacity = models.PositiveSmallIntegerField(default=0)
 
-    reservation = models.ManyToManyField(User)
+    reservation = models.ManyToManyField(User, blank=True)
 
+    trip_image1 = models.FileField(default='', blank=True)
+    trip_image2 = models.FileField(default='', blank=True)
+    trip_image3 = models.FileField(default='', blank=True)
 
     def get_absolute_url(self):
         return reverse('trips:detial', kwargs={'pk': self.pk})
@@ -40,8 +44,26 @@ class Trip(models.Model):
     def get_no_of_reservation(self):
         return User.objects.filter(pk = self.pk).count()
 
+    def check_time(self):
+        date_today = date.today()
+        if  date_today <= self.departing_date :
+            return True
+        else:
+            return False
+
+
+
     def __str__(self):
         return self.name
+
+
+# class TripForm(ModelForm):
+#     class Meta:
+#         model = Trip
+#         fields = [ 'name', 'origin', 'destination',
+#                   'departing_date', 'returning_date',
+#                   'transportstion', 'residence',
+#                   'price' ,'capacity' ]
 
 
 class Question(models.Model):
@@ -52,3 +74,7 @@ class Question(models.Model):
 
     def __str__(self):
         return self.Q_content
+
+
+class QuestionForm():
+    pass
