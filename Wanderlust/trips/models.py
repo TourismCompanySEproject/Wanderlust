@@ -39,7 +39,7 @@ class Trip(models.Model):
     trip_image3 = models.FileField(default='', blank=True)
 
     def get_absolute_url(self):
-        return reverse('trips:detial', kwargs={'pk': self.pk})
+        return reverse('trips:detail', kwargs={'pk': self.pk})
 
     def get_no_of_reservation(self):
         return User.objects.filter(pk = self.pk).count()
@@ -76,5 +76,9 @@ class Question(models.Model):
         return self.Q_content
 
 
-class QuestionForm():
+class QuestionForm(ModelForm):
     pass
+#     class Meta:
+#
+#         model = Question
+#         fields = [  'Q_content', 'Q_trip', 'asked_by', 'asked_at' ]

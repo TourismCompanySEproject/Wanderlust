@@ -5,36 +5,14 @@
 
 
 {%  block body %}
-<div class="container-fluid">
-
-    <div class="row">
-
-        <div class="col-sm col-md-7">
-            <div class="panel panel-default">
-                <div class="panel-body">
-
-                    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        {% include 'trips/form-template.html' %}
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-success">Submit</button>
-
-                            </div>
-                        </div>
-
-                    </form>
-
-
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-</div>
-
-
+    <div class="card-body">
+       <h3 class="card-title">Add new trip</h3>
+            <form method="post" novalidate>
+                {%  csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary btn-block">Add trip</button>
+            </form>
+   </div>
 
 
 {%  endblock %}

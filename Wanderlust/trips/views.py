@@ -31,6 +31,20 @@ def signup(request):
         form = SignUpForm()
     return  render(request, 'trips/signup.html', {'form':form})
 
+def auth_login(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                return render(request, 'trips/index.html')
+            else:
+                return render(request, 'trips/login.html', {'error_message': 'Your account has been disabled'})
+        else:
+            return render(request, 'trips/login.html', {'error_message': 'Invalid login'})
+    return render(request, 'trips/login.html')
 
 
 class TripCreate(CreateView):

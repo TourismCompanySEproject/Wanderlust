@@ -1,0 +1,27 @@
+{%  extends 'trips/base.html' %}
+<title>{% block title %}Trip Details{% endblock %}</title>
+
+{%  block body %}
+        <div>
+        <ul>
+                 <li>
+                     <a href = "{% url 'trips:detail' trip.id %}"> {{ trip.name }}</a>
+                     <p>from: {{ trip.origin  }} - to: {{ trip.destination  }}</p>
+                     <p>from: {{ trip.departing_date  }} - to: {{ trip.returning_date  }}</p>
+                     <p>Type of transportation: {{ trip.get_transportstion_display }} </p>
+                     <p>Type of residence: {{ trip.get_residence_display }} </p>
+                     <p>Adult price: {{ trip.adult_price }} L.E</p>
+                     <p>Kid price: {{ trip.adult_price }} L.E</p>
+                 <br>
+                 </li>
+
+        </ul>
+
+    </div>
+
+
+
+
+
+
+{%  endblock %}

@@ -16,7 +16,7 @@ urlpatterns = [
     # /login
     url(r'^login/$', auth_views.login , name='login'),
     # /logout
-    url(r'^logout/$', auth_views.logout ,{'next_page': '/' }, name='logout'),
+    url(r'^logout/$', auth_views.logout ,{'next_page': 'trips:index' }, name='logout'),
 
     # /trip/add/
     url(r'^create_trip/$', views.TripCreate.as_view(), name='create_trip'),

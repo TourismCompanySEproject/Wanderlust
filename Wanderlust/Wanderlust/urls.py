@@ -21,7 +21,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('trips.urls'))
+    url(r'^Wanderlust/', include('trips.urls')),
+    url(r'^Wanderlust/admin/', include('administrator.urls')),
 ]
 
 

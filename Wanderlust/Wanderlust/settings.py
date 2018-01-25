@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'trips.apps.TripsConfig',
+    'administrator.apps.AdministratorConfig',
+    'widget_tweaks'
 ]
 
 MIDDLEWARE = [
