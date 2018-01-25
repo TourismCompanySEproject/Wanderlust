@@ -8,6 +8,10 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
+from .filters import TripFilter
+from django_filters.views import FilterView
+from .filters import TripFilter
+
 
 class IndexView(generic.ListView):
     template_name = 'trips/index.html'
@@ -76,6 +80,11 @@ class TripUpdate(UpdateView):
 class TripDelete(DeleteView):
     model = Trip
     success_url = reverse_lazy('trips:index')
+
+class TripFilterView(FilterView):
+    filterset_class = TripFilter
+    template_name= 'trips/filter.html'
+
 
 #
 # @login_required

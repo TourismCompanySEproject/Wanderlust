@@ -2,6 +2,7 @@ from django.conf.urls import url
 from . import views
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
+from django_filters.views import FilterView
 
 app_name = 'trips'
 
@@ -22,7 +23,8 @@ urlpatterns = [
     url(r'^create_trip/$', views.TripCreate.as_view(), name='create_trip'),
     # /trip/2/
     url(r'^trip/(?P<pk>[0-9]+)/$', views.TripUpdate.as_view(), name='album-trip'),
-
+    # delete
     url(r'^trip/(?P<pk>[0-9]+)/delete_album/$', views.TripDelete.as_view(), name='delete_trip'),
-
+    # filter
+    url(r'^filter/$', views.TripFilterView.as_view(), name='filter'),
 ]
