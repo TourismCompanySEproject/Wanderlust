@@ -5,13 +5,24 @@ from django.core.urlresolvers import reverse_lazy
 from .models import Trip
 from .forms import SignUpForm
 from django.contrib.auth import login as auth_login
+from django.contrib.auth.decorators import permission_required
+from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 class IndexView(generic.ListView):
     template_name = 'trips/index.html'
     context_object_name = 'all_trips'
 
     def get_queryset(self):
-        return Trip.objects.all()
+        query = self.request.GET.get('q')
+        if query:
+            return Trip.objects.filter(
+                Q(name__icontains=query) |
+                Q(destination__icontains=query)
+            )
+
+        else:
+            return Trip.objects.all()
 
 class DetailView(generic.DetailView):
     model = Trip
@@ -66,3 +77,11 @@ class TripDelete(DeleteView):
     model = Trip
     success_url = reverse_lazy('trips:index')
 
+#
+# @login_required
+# def Booking_page(request):
+#     return render_to_response("trips:booking-form.html")
+
+@permission_required('entity.can_delete', login_url='trips:login')
+def Booking(request):
+    return render_to_response("trips/booking-form.html")

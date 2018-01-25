@@ -128,10 +128,10 @@ class PaymentForm(forms.Form):
 
 class SignUpForm(UserCreationForm, PaymentForm):
     email = forms.CharField(max_length = 30, required = True, widget= forms.EmailInput())
-    password1 = forms.CharField(widget= forms.PasswordInput)
-    password2 = forms.CharField(widget=forms.PasswordInput)
+ #   password = forms.CharField(widget= forms.PasswordInput)
+
 
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'username', 'email', 'password1', 'password2', 'number')
+        fields = ('first_name', 'last_name', 'username', 'email', 'number')
 
