@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
-from .models import Trip
+from .models import Trip, Question
 from .forms import SignUpForm
 from django.contrib.auth import login as auth_login
 from django.contrib.auth.decorators import permission_required
@@ -11,7 +11,7 @@ from django.db.models import Q
 from .filters import TripFilter
 from django_filters.views import FilterView
 from .filters import TripFilter
-
+from django.http import HttpResponse
 
 class IndexView(generic.ListView):
     template_name = 'trips/index.html'
@@ -32,6 +32,9 @@ class DetailView(generic.DetailView):
     model = Trip
     template_name = 'trips/detail.html'
 
+# class QuestionView(generic.ListView):
+#     template_name = 'trips/Questions.html'
+#     context_object_name = 'all_Questions'
 
 
 def signup(request):
@@ -56,10 +59,10 @@ def auth_login(request):
                 login(request, user)
                 return render(request, 'trips/index.html')
             else:
-                return render(request, 'trips/login.html', {'error_message': 'Your account has been disabled'})
+                return render(request, 'registration/login.html', {'error_message': 'Your account has been disabled'})
         else:
-            return render(request, 'trips/login.html', {'error_message': 'Invalid login'})
-    return render(request, 'trips/login.html')
+            return render(request, 'registration/login.html', {'error_message': 'Invalid login'})
+    return render(request, 'registration/login.html')
 
 
 class TripCreate(CreateView):
@@ -94,3 +97,29 @@ class TripFilterView(FilterView):
 @permission_required('entity.can_delete', login_url='trips:login')
 def Booking(request):
     return render_to_response("trips/booking-form.html")
+
+def admin_panel(request):
+    if not request.user.is_authenticated():
+        return redirect('trips:login')
+    if not request.user.is_staff:
+        return HttpResponse("<h3> You are not Authorized to view this page.</h3>"
+                            "<br>"
+                            "<a href=/Wanderlust/>return home</a>"
+                            )
+    else:
+        trips = Trip.objects.all()
+        questions = Question.objects.all()
+        query = request.GET.get("q")
+        if query:
+            return render(request, 'trips/admin-panel.html',
+                          {'trips' : trips.objects.filter(
+                            Q(name__icontains=query) |
+                            Q(destination__icontains=query)
+                            )}
+                          )
+
+        else:
+            return render(request, 'trips/admin-panel.html',
+                          {'trips' : trips},
+                          {'questions':questions}
+                          )

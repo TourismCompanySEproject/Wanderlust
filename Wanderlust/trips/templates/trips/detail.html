@@ -2,10 +2,11 @@
 <title>{% block title %}Trip Details{% endblock %}</title>
 
 {%  block body %}
+    <!-- Trip Details -->
         <div>
         <ul>
                  <li>
-                     <a href = "{% url 'trips:detail' trip.id %}"> {{ trip.name }}</a>
+                     <h1>{{ trip.name }}</h1>
                      <p>from: {{ trip.origin  }} - to: {{ trip.destination  }}</p>
                      <p>from: {{ trip.departing_date  }} - to: {{ trip.returning_date  }}</p>
                      <p>Type of transportation: {{ trip.get_transportstion_display }} </p>
@@ -16,8 +17,33 @@
                  </li>
 
         </ul>
-
     </div>
+        <!-- Admin contol -->
+        {% if user.is_staff  %}
+        <div>
+            <!-- Delete Trip -->
+            <form action="{% url 'trips:delete_trip' trip.id %}" method="post" style="display: inline;">
+                {% csrf_token %}
+                <input type="hidden" name="trip_id" value="{{ trip.id }}" />
+                <button type="submit" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-trash"></span>&nbsp; Delete
+                </button>
+            </form>
+
+            <!-- Update Trip -->
+            <a href="{% url 'trips:trip-update' trip.id %}" class="btn btn-default btn-sm" role="button">
+                <span class="glyphicon glyphicon-refresh"></span>&nbsp; Update
+            </a>
+
+        </div>
+        {% endif %}
+        <!-- User Bookin -->
+
+
+
+        <!-- User Questions -->
+
+
 
 
 

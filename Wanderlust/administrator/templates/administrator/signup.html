@@ -8,7 +8,8 @@
        <h3 class="card-title">Sign up</h3>
             <form method="post" novalidate>
                 {%  csrf_token %}
-                {{ form.as_p }}
+                {{ user_form.as_p }}
+                {{ profile_form.as_p }}
                 <button type="submit" class="btn btn-primary btn-block">Create an account</button>
             </form>
    </div>

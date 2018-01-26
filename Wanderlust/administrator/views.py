@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from django.views import generic
 from django.core.urlresolvers import reverse_lazy
-from .models import AdminUser
 from django.contrib.auth import login as auth_login
 from trips.models import Trip
+
 
 class IndexView(generic.ListView):
     template_name = 'administrator/index.html'
@@ -16,17 +16,22 @@ class DetailView(generic.DetailView):
     model = Trip
     template_name = 'administrator/detail.html'
 
-def signup(request):
-    if request.method=='POST':
 
-        form= AdminUser(request.POST)
-        if form.is_valid():
-            user= form.save()
-            auth_login(request, user)
-            return redirect('administrator:index')
-    else:
-        form = AdminUser()
-    return  render(request, 'administrator/signup.html', {'form':form})
+def signup(request):
+    pass
+
+    # if request.method=='POST':
+    #    form= (request.POST)
+    #
+    #    if form.is_valid():
+    #         user= form.save()
+    #         auth_login(request, user)
+    #         return redirect('administrator:index')
+    # else:
+    #     form = UserForm()
+    # return  render(request, 'administrator/signup.html', {'form':form})
+
+
 
 def auth_login(request):
     if request.method == "POST":
