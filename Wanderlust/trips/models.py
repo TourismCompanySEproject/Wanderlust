@@ -51,34 +51,16 @@ class Trip(models.Model):
         else:
             return False
 
-
-
     def __str__(self):
         return self.name
 
 
-# class TripForm(ModelForm):
-#     class Meta:
-#         model = Trip
-#         fields = [ 'name', 'origin', 'destination',
-#                   'departing_date', 'returning_date',
-#                   'transportstion', 'residence',
-#                   'price' ,'capacity' ]
-
 
 class Question(models.Model):
-    Q_content = models.CharField(max_length=500)
+    Q_content = models.TextField(max_length=500)
     Q_trip = models.ForeignKey(Trip, related_name='question', on_delete= models.CASCADE)
     asked_by = models.ForeignKey(User, related_name='question', on_delete= models.CASCADE)
     asked_at = models.DateTimeField(auto_now_add= True)
 
     def __str__(self):
         return self.Q_content
-
-
-class QuestionForm(ModelForm):
-    pass
-#     class Meta:
-#
-#         model = Question
-#         fields = [  'Q_content', 'Q_trip', 'asked_by', 'asked_at' ]

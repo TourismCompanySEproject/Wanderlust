@@ -9,8 +9,11 @@
     <div>
         <ul>
             {% for trip in trips %}
+
+                {% if trip.check_time %}
                  <li>
                      <a href = "{% url 'trips:detail' trip.id %}"> {{ trip.name }}</a>
+                     <span>Upcoming Trips</span>
                      <p>from: {{ trip.origin  }} - to: {{ trip.destination  }}</p>
                      <p>from: {{ trip.departing_date  }} - to: {{ trip.returning_date  }}</p>
                      <p>Type of transportation: {{ trip.get_transportstion_display }} </p>
@@ -18,6 +21,19 @@
                      <p>Total cost per persons: {{ trip.adultprice }} L.E</p>
                  <br>
                  </li>
+
+                {% else %}
+                 <li>
+                     <a href = "{% url 'trips:detail' trip.id %}"> {{ trip.name }}</a>
+                     <span>Past Trip</span>
+                     <p>from: {{ trip.origin  }} - to: {{ trip.destination  }}</p>
+                     <p>from: {{ trip.departing_date  }} - to: {{ trip.returning_date  }}</p>
+                     <p>Type of transportation: {{ trip.get_transportstion_display }} </p>
+                     <p>Type of residence: {{ trip.get_residence_display }} </p>
+                     <p>Total cost per persons: {{ trip.adultprice }} L.E</p>
+                 <br>
+                 </li>
+                {% endif %}
             {%  endfor %}
         </ul>
 
@@ -25,13 +41,11 @@
 
 <div>
         <ul>
-        if
-
 
             {% for question in questions %}
                  <li>
-                     <p>New Questions was asked by {{ question.asked_by.name }} on Trip</p>
-                     <a href = "{% url 'trips:detail' quesetion.Q_trip.id %}"> {{ question.Q_trip.name }}</a>
+                     <p>New Questions was asked by {{ question.asked_by }} on Trip</p>
+                     <a href = "{% url 'trips:detail' question.Q_trip.pk %}"> {{ question.Q_trip }}</a>
                      <p>at: {{ question.asked_at }} </p>
                  <br>
                  </li>

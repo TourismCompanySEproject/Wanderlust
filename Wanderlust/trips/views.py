@@ -33,8 +33,12 @@ class DetailView(generic.DetailView):
     template_name = 'trips/detail.html'
 
 # class QuestionView(generic.ListView):
-#     template_name = 'trips/Questions.html'
+#     template_name = 'trips/question-list.html'
 #     context_object_name = 'all_Questions'
+#     model = Question
+#     def get_queryset(self):
+#         return Question.objects.order_by(self.asked_at)
+
 
 
 def signup(request):
@@ -119,7 +123,4 @@ def admin_panel(request):
                           )
 
         else:
-            return render(request, 'trips/admin-panel.html',
-                          {'trips' : trips},
-                          {'questions':questions}
-                          )
+            return render(request, 'trips/admin-panel.html', {'trips' : trips, 'questions':questions })
