@@ -36,6 +36,7 @@ class CreditCardField(forms.IntegerField):
                                         "Master Card, or American Express credit card number.")
         return super(CreditCardField, self).clean(value)
 
+
 class CCExpWidget(forms.MultiWidget):
     """ Widget containing two select boxes for selecting the month and year"""
     def decompress(self, value):

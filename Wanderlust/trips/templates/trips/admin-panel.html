@@ -6,38 +6,67 @@
 
 
 
-    <div>
-        <ul>
+
+
+<div class="albums-container container-fluid" style="height:400px">
+
+    <!-- Trips -->
+    <div class="row "  >
+
             {% for trip in trips %}
+                    {% if trip.check_time %}
 
-                {% if trip.check_time %}
-                 <li>
-                     <a href = "{% url 'trips:detail' trip.id %}"> {{ trip.name }}</a>
-                     <span>Upcoming Trips</span>
-                     <p>from: {{ trip.origin  }} - to: {{ trip.destination  }}</p>
-                     <p>from: {{ trip.departing_date  }} - to: {{ trip.returning_date  }}</p>
-                     <p>Type of transportation: {{ trip.get_transportstion_display }} </p>
-                     <p>Type of residence: {{ trip.get_residence_display }} </p>
-                     <p>Total cost per persons: {{ trip.adultprice }} L.E</p>
-                 <br>
-                 </li>
+                <div class="col-sm-4 col-lg-2">
+                    <div class="thumbnail" style="width: 200px ; height: 300px;  ">
+                        <a href="{% url 'trips:detail' trip.id %}">
+                            <img style="width: 200px ; height: 100px;" src="{{ trip.trip_image1.url }}" class="img-responsive">
+                        </a>
+                        <div class="caption">
 
-                {% else %}
-                 <li>
-                     <a href = "{% url 'trips:detail' trip.id %}"> {{ trip.name }}</a>
-                     <span>Past Trip</span>
-                     <p>from: {{ trip.origin  }} - to: {{ trip.destination  }}</p>
-                     <p>from: {{ trip.departing_date  }} - to: {{ trip.returning_date  }}</p>
-                     <p>Type of transportation: {{ trip.get_transportstion_display }} </p>
-                     <p>Type of residence: {{ trip.get_residence_display }} </p>
-                     <p>Total cost per persons: {{ trip.adultprice }} L.E</p>
-                 <br>
-                 </li>
-                {% endif %}
-            {%  endfor %}
-        </ul>
+                            <div class="caption-title" style="width: 175px ; height: 50px;">
+
+                                <h2 style="font-size: 20px">{{ trip.name }}</h2> <span>Upcoming Trips</span></div>
+                            <div class="caption-desc" style="width: 175px ; height: 85px;">
+                                <p style="font-size: 12px">helasdlkm apsodasdasd asdasd asd asd asd asdasd  asdasd asd asd asd asdasd asdasd asdasd apsd,as,d aisdasd;, asdpokasdmla,sdqwpdl</p>
+                            </div>
+                            <div class="caption-prince">
+                                <h4 style="text-align: right ;"> {{ trip.adult_price }}</h4></div>
+                        </div>
+                    </div>
+                </div>
+                   {% else %}
+
+                <div class="col-sm-4 col-lg-2" >
+                    <div class="thumbnail" style="width: 200px ; height: 300px;  ">
+                        <a href="{% url 'trips:detail' trip.id %}">
+                            <img style="width: 200px ; height: 100px;" src="{{ trip.trip_image1.url }}" class="img-responsive">
+                        </a>
+                        <div class="caption">
+
+                            <div class="caption-title" style="width: 175px ; height: 50px;">
+
+                                <h2 style="font-size: 20px">{{ trip.name }}</h2> <span>Past Trips</span></div>
+                            <div class="caption-desc" style="width: 175px ; height: 85px; ">
+                                <p style="font-size: 12px">helasdlkm apsodasdasd asdasd asd asd asd asdasd  asdasd asd asd asd asdasd asdasd asdasd apsd,as,d aisdasd;, asdpokasdmla,sdqwpdl</p>
+                            </div>
+                            <div class="caption-prince">
+                                <h4 style="text-align: right ;"> {{ trip.adult_price }}</h4></div>
 
     </div>
+        </div>
+        </div>
+  {% endif %}
+          {%  endfor %}
+    </div>
+
+    </div>
+
+
+
+
+
+
+
 
 <div>
         <ul>
