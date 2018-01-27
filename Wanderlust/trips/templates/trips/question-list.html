@@ -1,9 +1,6 @@
-{%  extends 'trips/base.html' %}
-<title>{% block title %}Trip Details{% endblock %}</title>
 
-{%  block body %}
-
-            {% for question in all_Questions %}
+<ul>
+            {% for question in trip_questions %}
                  <li>
                      <p>New Questions was asked by {{ question.asked_by }} on Trip</p>
                      <a href = "{% url 'trips:detail' question.Q_trip.pk %}"> {{ question.Q_trip }}</a>
@@ -12,8 +9,5 @@
                  </li>
             {%  endfor %}
 
+</ul>
 
-
-
-
-{%  endblock %}

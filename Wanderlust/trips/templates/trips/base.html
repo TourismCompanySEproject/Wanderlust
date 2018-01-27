@@ -5,13 +5,14 @@
      <meta charset="UTF-8">
     <title>{% block title %}Wanderlust{% endblock %}</title>
 {% load widget_tweaks %}
+{% load static %}
 {%  load staticfiles %} {#  To Be edited #}
     <link rel="shortcut icon" type="image/png" href="{%  static 'oxy.ico' %}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="{% static 'trips/style.css' %}"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'trips/style.css' %}"/>
 
 </head>
 

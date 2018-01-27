@@ -32,13 +32,13 @@ class DetailView(generic.DetailView):
     model = Trip
     template_name = 'trips/detail.html'
 
-# class QuestionView(generic.ListView):
-#     template_name = 'trips/question-list.html'
-#     context_object_name = 'all_Questions'
-#     model = Question
-#     def get_queryset(self):
-#         return Question.objects.order_by(self.asked_at)
-
+# def questions(request, pk):
+#     trip_questions=[]
+#     for trip in Trip.objects.filter(pk =pk):
+#         for question in trip.question_set.all():
+#             trip_questions.append(question)
+#     return render(request, 'trips/question-list.html',
+#                   {'trip_questions': trip_questions})
 
 
 def signup(request):

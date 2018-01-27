@@ -4,8 +4,7 @@
 {%  block body %}
     <!-- Trip Details -->
         <div>
-        <ul>
-                 <li>
+
                      <h1>{{ trip.name }}</h1>
                      <p>from: {{ trip.origin  }} - to: {{ trip.destination  }}</p>
                      <p>from: {{ trip.departing_date  }} - to: {{ trip.returning_date  }}</p>
@@ -13,10 +12,7 @@
                      <p>Type of residence: {{ trip.get_residence_display }} </p>
                      <p>Adult price: {{ trip.adult_price }} L.E</p>
                      <p>Kid price: {{ trip.adult_price }} L.E</p>
-                 <br>
-                 </li>
 
-        </ul>
     </div>
         <!-- Admin contol -->
         {% if user.is_staff  %}
@@ -42,6 +38,20 @@
 
 
         <!-- User Questions -->
+
+<ul>
+            {% for question in trip.question_set.all %}
+                 <li>
+                     <p>New Questions was asked by {{ question.asked_by }} on Trip</p>
+                     <a href = "{% url 'trips:detail' question.Q_trip.pk %}"> {{ question.Q_trip }}</a>
+                     <p>at: {{ question.asked_at }} </p>
+                 <br>
+                 </li>
+            {%  endfor %}
+
+</ul>
+
+
 
 
 
