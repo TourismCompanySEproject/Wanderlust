@@ -1,0 +1,19 @@
+{%  extends 'trips/base.html' %}
+<title>{% block title %}Trip Details{% endblock %}</title>
+
+{%  block body %}
+
+            {% for question in all_Questions %}
+                 <li>
+                     <p>New Questions was asked by {{ question.asked_by }} on Trip</p>
+                     <a href = "{% url 'trips:detail' question.Q_trip.pk %}"> {{ question.Q_trip }}</a>
+                     <p>at: {{ question.asked_at }} </p>
+                 <br>
+                 </li>
+            {%  endfor %}
+
+
+
+
+
+{%  endblock %}

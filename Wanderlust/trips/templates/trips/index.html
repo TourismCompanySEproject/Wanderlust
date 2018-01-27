@@ -2,23 +2,42 @@
 
 {%  block body %}
 
-    <div>
-        <ul>
-            {% for trip in all_trips %}
-                 <li>
-                     <a href = "{% url 'trips:detail' trip.id %}"> {{ trip.name }}</a>
-                     <p>from: {{ trip.origin  }} - to: {{ trip.destination  }}</p>
-                     <p>from: {{ trip.departing_date  }} - to: {{ trip.returning_date  }}</p>
-                     <p>Type of transportation: {{ trip.get_transportstion_display }} </p>
-                     <p>Type of residence: {{ trip.get_residence_display }} </p>
-                     <p>Total cost per persons: {{ trip.price }} L.E</p>
-                 <br>
-                 </li>
-            {%  endfor %}
-        </ul>
+<div class="albums-container container-fluid" style="height:400px">
 
+    <!-- Trips -->
+    <div class="row " >
+
+            {% for trip in all_trips %}
+                <div class="col-sm-4 col-lg-2" >
+                    <div class="thumbnail">
+                        <a href="{% url 'trips:detail' trip.id %}">
+                            <img src="{{ trip.trip_image1.url }}" class="img-responsive">
+                        </a>
+                        <div class="caption">
+                            <h2>{{ trip.name }}</h2>
+                            <h4>{{ trip.adult_price }}</h4>
+
+{#                #}
+{#                {%  if trip.check_time %}#}
+{#                 <li>#}
+{#                     <a href = "{% url 'trips:detail' trip.id %}"> {{ trip.name }}</a>#}
+{#                     <p>from: {{ trip.origin  }} - to: {{ trip.destination  }}</p>#}
+{#                     <p>from: {{ trip.departing_date  }} - to: {{ trip.returning_date  }}</p>#}
+{#                     <p>Type of transportation: {{ trip.get_transportstion_display }} </p>#}
+{#                     <p>Type of residence: {{ trip.get_residence_display }} </p>#}
+{#                     <p>Total cost per persons: {{ trip.price }} L.E</p>#}
+{#                 <br>#}
+{#                 </li>#}
+{#                {% endif %}#}
+
+
+</div>
+        </div>
+        </div>
+          {%  endfor %}
     </div>
 
+    </div>
 
 
 {%  endblock %}

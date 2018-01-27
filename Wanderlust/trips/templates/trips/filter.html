@@ -1,0 +1,38 @@
+{%  extends 'trips/base.html' %}
+
+<title>{% block title %}Filtering Trips{% endblock %}</title>
+
+
+
+{%  block body %}
+
+    <div>
+     <form method="get">
+        {{ filter.form.as_p }}
+       <button type="submit">Search</button>
+      </form>
+    </div>
+
+    <div>
+        <ul>
+            {% for trip in filter.qs %}
+                {%  if trip.check_time %}
+                 <li>
+                     <a href = "{% url 'trips:detail' trip.id %}"> {{ trip.name }}</a>
+                     <p>from: {{ trip.origin  }} - to: {{ trip.destination  }}</p>
+                     <p>from: {{ trip.departing_date  }} - to: {{ trip.returning_date  }}</p>
+                     <p>Type of transportation: {{ trip.get_transportstion_display }} </p>
+                     <p>Type of residence: {{ trip.get_residence_display }} </p>
+                     <p>Total cost per persons: {{ trip.adult_price }} L.E</p>
+                 <br>
+                 </li>
+                {% endif %}
+            {%  endfor %}
+        </ul>
+
+    </div>
+
+
+
+
+{%  endblock %}
