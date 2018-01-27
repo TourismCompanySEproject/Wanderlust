@@ -36,11 +36,7 @@ class CreditCardField(forms.IntegerField):
                                         "Master Card, or American Express credit card number.")
         return super(CreditCardField, self).clean(value)
 
-<<<<<<< HEAD
-class SignUpForm(UserCreationForm):
-    email = forms.CharField(max_length = 30, required = True, widget= forms.EmailInput())
-    #credit_card_no = CreditCardField(forms.Form, required=True, label= "Credit Card")
-=======
+
 class CCExpWidget(forms.MultiWidget):
     """ Widget containing two select boxes for selecting the month and year"""
     def decompress(self, value):
@@ -103,7 +99,6 @@ class PaymentForm(forms.Form):
     expiration = CCExpField(required = True, label = "Expiration")
     ccv_number = forms.IntegerField(required = True, label = "CCV Number",
         max_value = 9999, widget = forms.TextInput(attrs={'size': '4'}))
->>>>>>> 4e0d8376f8ba9562881666d3b620cddec9a7424d
 
     def __init__(self, *args, **kwargs):
         self.payment_data = kwargs.pop('payment_data', None)
@@ -137,9 +132,5 @@ class SignUpForm(UserCreationForm, PaymentForm):
  #   password = forms.CharField(widget= forms.PasswordInput)
     class Meta:
         model = User
-<<<<<<< HEAD
-        fields = ('first_name', 'last_name', 'username', 'email', 'password1', 'password2')
-=======
         fields = ('first_name', 'last_name', 'username', 'email', 'number')
 
->>>>>>> 4e0d8376f8ba9562881666d3b620cddec9a7424d

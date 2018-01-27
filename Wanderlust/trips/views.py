@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.core.urlresolvers import reverse_lazy
+from django.urls import reverse_lazy
 from .models import Trip, Question
 from .forms import SignUpForm
 from django.contrib.auth import login as auth_login
@@ -103,7 +103,7 @@ def Booking(request):
     return render_to_response("trips/booking-form.html")
 
 def admin_panel(request):
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         return redirect('trips:login')
     if not request.user.is_staff:
         return HttpResponse("<h3> You are not Authorized to view this page.</h3>"

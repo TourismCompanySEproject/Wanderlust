@@ -3,12 +3,62 @@
 
 {%  block body %}
 
-     <h3 class="card-title">Log in</h3>
-            <form method="post" novalidate>
-                {%  csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-primary btn-block">log in</button>
-            </form>
+
+
+
+
+    <div style="margin-top: 4% ;" class="container signin-container">
+        <div class="row">
+            <div class="col"></div>
+
+            <div class="col-md-12  col-md-8 col-lg-5 ">
+
+            <div  style=" padding: 0px 60px 20px ;background-color: #f4f4f4;box-shadow: 2px 2px 5px rgba(0,0,0,.5);-webkit-box-shadow: 2px 2px 5px rgba(0,0,0,.5);-moz-box-shadow: 2px 2px 5px rgba(0,0,0,.5);" class="card signin-card">
+                <div class="card-block">
+                    <img style="padding: 0 2rem 2rem ;margin: auto;display: block;width: 50%" src="https://lh4.googleusercontent.com/PAtdv9tXcu2sI-o8wIV83E7YiLfd2rrdQ2RSOLZiVgUVJsXZ87WydoDZO48Z2UGjxFKKM9Sp9tDWnyOE6YvP=w1360-h564" class="img-fluid signin-img">
+                    <form method="post" novalidate="" style="max-width: 350px;margin: auto;" class="sigin-form">
+                         {%  csrf_token %}
+                        <div class="form-group">
+
+                            <input name="username" type="text" class="form-control" autofocus="254" required id="id_username" placeholder="Username">
+                        </div>
+                        <div class="form-group">
+
+                            <input name="password" type="password" class="form-control" required id="id_password" placeholder="Password">
+                        </div>
+                        <button type="submit" style="color: #ffffff; background-color: #d64829; width: 100%; margin-bottom: 1.2rem;" class="btn singning-btn btn-lg">Sign In</button>
+                        <div class="form-check">
+                            <label class="from-check-label">
+                                <input class="from-check-input" type="checkbox"> Remember Me <a href="#">Need Help?</a>
+                            </label>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <a  style="font-size: 1.2rem;text-align: center;display: block;margin-top: 15px;" href="{% url 'trips:signup'%}">Create New Account</a>
+            </div>
+            <div class="col"></div>
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

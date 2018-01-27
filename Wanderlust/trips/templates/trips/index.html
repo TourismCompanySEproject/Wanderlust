@@ -5,17 +5,22 @@
 <div class="albums-container container-fluid" style="height:400px">
 
     <!-- Trips -->
-    <div class="row " >
+    <div class="row "  >
 
             {% for trip in all_trips %}
-                <div class="col-sm-4 col-lg-2" >
-                    <div class="thumbnail">
+                <div class="col-sm-4 col-lg-2" " >
+                    <div class="thumbnail" style="width: 200px ; height: 300px;  ">
                         <a href="{% url 'trips:detail' trip.id %}">
-                            <img src="{{ trip.trip_image1.url }}" class="img-responsive">
+                            <img style="width: 200px ; height: 100px;" src="{{ trip.trip_image1.url }}" class="img-responsive">
                         </a>
                         <div class="caption">
-                            <h2>{{ trip.name }}</h2>
-                            <h4>{{ trip.adult_price }}</h4>
+                            <div class="caption-title" style="width: 175px ; height: 50px;">
+                                <h2 style="font-size: 20px">{{ trip.name }}</h2> </div>
+                            <div class="caption-desc" style="width: 175px ; height: 85px;">
+                                <p style="font-size: 12px">helasdlkm apsodasdasd asdasd asd asd asd asdasd  asdasd asd asd asd asdasd asdasd asdasd apsd,as,d aisdasd;, asdpokasdmla,sdqwpdl</p>
+                            </div>
+                            <div class="caption-prince">
+                                <h4 style="text-align: right ;"> {{ trip.adult_price }}</h4></div>
 
 {#                #}
 {#                {%  if trip.check_time %}#}
