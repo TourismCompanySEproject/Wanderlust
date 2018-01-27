@@ -8,6 +8,8 @@
     <div class="row "  >
 
             {% for trip in all_trips %}
+                                {%  if trip.check_time %}
+
                 <div class="col-sm-4 col-lg-2" " >
                     <div class="thumbnail" style="width: 200px ; height: 300px;  ">
                         <a href="{% url 'trips:detail' trip.id %}">
@@ -20,25 +22,14 @@
                                 <p style="font-size: 12px">helasdlkm apsodasdasd asdasd asd asd asd asdasd  asdasd asd asd asd asdasd asdasd asdasd apsd,as,d aisdasd;, asdpokasdmla,sdqwpdl</p>
                             </div>
                             <div class="caption-prince">
-                                <h4 style="text-align: right ;"> {{ trip.adult_price }}</h4></div>
-
-{#                #}
-{#                {%  if trip.check_time %}#}
-{#                 <li>#}
-{#                     <a href = "{% url 'trips:detail' trip.id %}"> {{ trip.name }}</a>#}
-{#                     <p>from: {{ trip.origin  }} - to: {{ trip.destination  }}</p>#}
-{#                     <p>from: {{ trip.departing_date  }} - to: {{ trip.returning_date  }}</p>#}
-{#                     <p>Type of transportation: {{ trip.get_transportstion_display }} </p>#}
-{#                     <p>Type of residence: {{ trip.get_residence_display }} </p>#}
-{#                     <p>Total cost per persons: {{ trip.price }} L.E</p>#}
-{#                 <br>#}
-{#                 </li>#}
-{#                {% endif %}#}
+                                <h4 style="text-align: right ;"> {{ trip.adult_price }}</h4>
+                            </div>
 
 
 </div>
         </div>
         </div>
+                {% endif %}
           {%  endfor %}
     </div>
 
