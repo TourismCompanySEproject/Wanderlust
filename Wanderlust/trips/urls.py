@@ -12,8 +12,6 @@ urlpatterns = [
     # /<trip-id>/
     url(r'^trip/(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
 
-    # url(r'^trip/(?P<pk>[0-9]+)/question/$', views.questions, name='question'),
-
 
     # /<trip-id>/
     url(r'^trip/(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),

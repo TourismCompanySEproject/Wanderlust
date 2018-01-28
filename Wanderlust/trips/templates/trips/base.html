@@ -11,19 +11,18 @@
     <link rel="shortcut icon" type="image/png" href="{%  static 'oxy.ico' %}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
-<<<<<<< HEAD
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'trips/style.css' %}"/>
-=======
-    <link rel="stylesheet" type="text/css" href="{% static 'trips/style.css' %}"/>
-
-    <link rel="stylesheet" type="text/css" href="{% static '//trips/main.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'trips/main.css' %}"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
->>>>>>> 8a42f843ac71014bf91dedeea98ed9fafd1b4462
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+     <script src="{% static 'trips/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'trips/popper.min.js' %}"></script>
+    <script src="{% static 'trips/bootstrap.min.js' %}"></script>
+    {% block stylesheet %}{% endblock %}
 
 </head>
 
@@ -150,7 +149,7 @@ margin-top: 200px; ">
     </div>
 </div>
 
-
+</div>
 
 </footer>
 </body>

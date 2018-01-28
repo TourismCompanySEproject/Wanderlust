@@ -32,14 +32,6 @@ class DetailView(generic.DetailView):
     model = Trip
     template_name = 'trips/detail.html'
 
-# def questions(request, pk):
-#     trip_questions=[]
-#     for trip in Trip.objects.filter(pk =pk):
-#         for question in trip.question_set.all():
-#             trip_questions.append(question)
-#     return render(request, 'trips/question-list.html',
-#                   {'trip_questions': trip_questions})
-
 
 def signup(request):
     if request.method=='POST':
