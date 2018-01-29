@@ -72,22 +72,24 @@
 
 
 
-<div>
-        <ul>
+<div  >
+
 
             {% for question in questions %}
-                 <div>
-                    <div>
-                     <p>New Questions was asked by {{ question.asked_by }} on Trip</p>
-                        </div>
-                                         <div>
+                <div class="col-lg-3">
+                 <div class="thumbnail" id="thumbnail-question" >
 
-                     <a href = "{% url 'trips:detail' question.Q_trip.pk %}"> {{ question.Q_trip }}</a>
+                     <p><br>New Questions was asked <br> by {{ question.asked_by }}</p>
+
+
+                     <p>on trip: <a href = "{% url 'trips:detail' question.Q_trip.pk %}"> {{ question.Q_trip }}</a></p>
+
                      <p>at: {{ question.asked_at }} </p>
-                 <br>
+
                  </div>
+                </div>
             {%  endfor %}
-        </ul>
+
 
     </div>
 
