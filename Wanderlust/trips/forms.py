@@ -136,7 +136,7 @@ class SignUpForm(UserCreationForm, PaymentForm):
 
 
 class NewQuestionForm(forms.ModelForm):
-    message = forms.CharField(
+    Q_content = forms.CharField(
         widget=forms.Textarea(
             attrs={'rows': 5, 'placeholder': 'Leave a comment'}
         ),
