@@ -119,7 +119,8 @@ def auth_login(request):
 
 class TripCreate(CreateView):
     model = Trip
-    fields = ['name', 'origin', 'destination',
+    fields = ['name','description',
+              'origin', 'destination',
             'departing_date', 'returning_date',
             'transportstion', 'residence',
             'adult_price' ,'kid_price', 'capacity']
@@ -127,7 +128,7 @@ class TripCreate(CreateView):
 
 class TripUpdate(UpdateView):
     model = Trip
-    fields = ['name', 'origin', 'destination',
+    fields = ['name', 'origin','description','destination',
             'departing_date', 'returning_date',
             'transportstion', 'residence',
             'adult_price' ,'kid_price' ,'capacity']

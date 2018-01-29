@@ -7,28 +7,62 @@
 {%  block body %}
 
     <div>
-     <form method="get">
-        {{ filter.form.as_p }}
+
+<form method="get">
+
+        <p><label for="id_origin">Origin:</label> <input type="text" name="origin" id="id_origin"></p>
+<p><label for="id_destination">Destination:</label> <input type="text" name="destination" id="id_destination"></p>
+<p><label for="id_departing_date">Departing date:</label> <input type="text" name="departing_date" id="id_departing_date"></p>
+<p><label for="id_returning_date">Returning date:</label> <input type="text" name="returning_date" id="id_returning_date"></p>
+<p><label for="id_transportstion">Transportstion:</label> <select name="transportstion" id="id_transportstion">
+  <option value="" selected="">---------</option>
+
+  <option value="B">Bus</option>
+
+  <option value="T">Train</option>
+
+  <option value="P">Plane</option>
+
+  <option value="S">Ship</option>
+
+</select></p>
+<p><label for="id_residence">Residence:</label> <select name="residence" id="id_residence">
+  <option value="" selected="">---------</option>
+
+  <option value="M">Motel</option>
+
+  <option value="T">3 star Hotel</option>
+
+  <option value="F">4 star Hotel</option>
+
+  <option value="V">5 star Hotel</option>
+
+  <option value="N">N/N</option>
+
+</select></p>
        <button type="submit">Search</button>
       </form>
-    </div>
 
-    <div>
-        <ul>
+    <div style="padding-top: 50px;">
+
             {% for trip in filter.qs %}
                 {%  if trip.check_time %}
-                 <li>
+                <div class="col-sm-4 col-lg-2">
+                    <div class="thumbnail" style="width: 230px ; height: 300px; padding-top:   ">
                      <a href = "{% url 'trips:detail' trip.id %}"> {{ trip.name }}</a>
+
                      <p>from: {{ trip.origin  }} - to: {{ trip.destination  }}</p>
                      <p>from: {{ trip.departing_date  }} - to: {{ trip.returning_date  }}</p>
                      <p>Type of transportation: {{ trip.get_transportstion_display }} </p>
                      <p>Type of residence: {{ trip.get_residence_display }} </p>
                      <p>Total cost per persons: {{ trip.adult_price }} L.E</p>
+
+
                  <br>
-                 </li>
+                    </div></div>
                 {% endif %}
             {%  endfor %}
-        </ul>
+
 
     </div>
 
