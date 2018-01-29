@@ -72,6 +72,9 @@
           </div>
         </div>
         {{ question.get_message_as_markdown }}
+          {% if user.is_staff %}
+          <a href="{% url 'trips:reply_question' trip.id question.id %}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; reply comment </a>
+          {% endif %}
       </div>
     </div>
   {% endfor %}

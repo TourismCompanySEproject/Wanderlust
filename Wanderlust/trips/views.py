@@ -54,6 +54,7 @@ def newQuestion(request, pk):
 def reply_question(request, pk, question_pk):
     if request.user.is_staff:
         question = get_object_or_404(Question, Q_trip__pk=pk, pk=question_pk)
+        trip = get_object_or_404(Trip ,pk=pk)
         if request.method == 'POST':
             form = NewQuestionForm(request.POST)
             if form.is_valid():
@@ -62,12 +63,12 @@ def reply_question(request, pk, question_pk):
                 question.asked_by = request.user
                 question.save()
 
-                trip_url = reverse('trips:detail', kwargs={'pk': pk, 'question_pk': question_pk})
+                trip_url = reverse('trips:detail', kwargs={'pk': pk})
 
                 return redirect(trip_url)
         else:
             form = NewQuestionForm()
-        return render(request, 'trips/new-question.html', {'form': form})
+        return render(request, 'trips/reply-question.html', {'form': form})
 
 # class NewQuestionView(CreateView):
 #     model = Question
