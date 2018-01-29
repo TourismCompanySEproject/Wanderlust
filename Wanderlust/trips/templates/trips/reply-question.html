@@ -1,0 +1,11 @@
+{% extends 'trips/base.html' %}
+
+{% block title %}Reply to Question{% endblock %}
+
+{% block body %}
+  <form method="post" novalidate>
+    {% csrf_token %}
+    {% include 'trips/form.html' %}
+    <button type="submit" class="btn btn-success">reply</button>
+  </form>
+{% endblock %}
