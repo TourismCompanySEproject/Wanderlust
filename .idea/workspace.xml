@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1370c33-bbf3-4eda-b727-bc2dc8b4f475" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Wanderlust/db.sqlite3" afterPath="$PROJECT_DIR$/Wanderlust/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Wanderlust/trips/static/trips/style.css" afterPath="$PROJECT_DIR$/Wanderlust/trips/static/trips/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Wanderlust/trips/templates/trips/admin-panel.html" afterPath="$PROJECT_DIR$/Wanderlust/trips/templates/trips/admin-panel.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Wanderlust/trips/templates/trips/index.html" afterPath="$PROJECT_DIR$/Wanderlust/trips/templates/trips/index.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -57,8 +54,10 @@
                 <element signature="e#99#119#0#HTML" expanded="true" />
                 <element signature="e#357#396#0#HTML" expanded="true" />
                 <element signature="e#724#760#0#HTML" expanded="true" />
-                <element signature="e#904#957#0#HTML" expanded="true" />
-                <element signature="e#1195#1222#0#HTML" expanded="true" />
+                <marker date="1517237504430" expanded="true" signature="1299:1419" ph="..." />
+                <marker date="1517237504430" expanded="false" signature="1342:1357" ph="..." />
+                <marker date="1517237504430" expanded="true" signature="1498:1626" ph="..." />
+                <marker date="1517237504430" expanded="true" signature="1543:1562" ph="..." />
               </folding>
             </state>
           </provider>
@@ -68,7 +67,7 @@
         <entry file="file://$PROJECT_DIR$/Wanderlust/trips/templates/trips/admin-panel.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="16">
-              <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding>
                 <element signature="e#162#182#0#HTML" expanded="true" />
                 <element signature="e#505#542#0#HTML" expanded="true" />
@@ -107,7 +106,7 @@
         <entry file="file://$PROJECT_DIR$/Wanderlust/trips/static/trips/main.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -143,9 +142,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Wanderlust/trips/templates/trips/base.html" />
-        <option value="$PROJECT_DIR$/Wanderlust/trips/templates/trips/index.html" />
         <option value="$PROJECT_DIR$/Wanderlust/trips/templates/trips/admin-panel.html" />
         <option value="$PROJECT_DIR$/Wanderlust/trips/static/trips/style.css" />
+        <option value="$PROJECT_DIR$/Wanderlust/trips/templates/trips/index.html" />
       </list>
     </option>
   </component>
@@ -383,7 +382,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1374" height="732" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="manage.py@website" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17455138" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -524,7 +522,7 @@
     <entry file="file://$PROJECT_DIR$/Wanderlust/trips/static/trips/main.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -567,7 +565,7 @@
     <entry file="file://$PROJECT_DIR$/Wanderlust/trips/templates/trips/admin-panel.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="16">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
             <element signature="e#162#182#0#HTML" expanded="true" />
             <element signature="e#505#542#0#HTML" expanded="true" />
@@ -587,8 +585,10 @@
             <element signature="e#99#119#0#HTML" expanded="true" />
             <element signature="e#357#396#0#HTML" expanded="true" />
             <element signature="e#724#760#0#HTML" expanded="true" />
-            <element signature="e#904#957#0#HTML" expanded="true" />
-            <element signature="e#1195#1222#0#HTML" expanded="true" />
+            <marker date="1517237504430" expanded="true" signature="1299:1419" ph="..." />
+            <marker date="1517237504430" expanded="false" signature="1342:1357" ph="..." />
+            <marker date="1517237504430" expanded="true" signature="1498:1626" ph="..." />
+            <marker date="1517237504430" expanded="true" signature="1543:1562" ph="..." />
           </folding>
         </state>
       </provider>
