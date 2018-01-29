@@ -1,9 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from .models import Trip, Question
-from .forms import SignUpForm
+from .forms import SignUpForm, NewQuestionForm
 from django.contrib.auth import login as auth_login
 from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.decorators import login_required
@@ -32,14 +32,62 @@ class DetailView(generic.DetailView):
     model = Trip
     template_name = 'trips/detail.html'
 
-# def questions(request, pk):
-#     trip_questions=[]
-#     for trip in Trip.objects.filter(pk =pk):
-#         for question in trip.question_set.all():
-#             trip_questions.append(question)
-#     return render(request, 'trips/question-list.html',
-#                   {'trip_questions': trip_questions})
+@login_required(redirect_field_name='trips/new-question.html', login_url='trips:login')
+def newQuestion(request, pk):
+    if request.user.is_authenticated:
+        trip = get_object_or_404(Trip, pk=pk)
+        if request.method == 'POST':
+            form = NewQuestionForm(request.POST)
+            if form.is_valid():
+                question = form.save(commit=False)
+                question.Q_trip = trip
+                question.asked_by = request.user
+                question.save()
 
+                return redirect(reverse('trips:detail', kwargs={'pk':pk}))
+        else:
+            form = NewQuestionForm()
+        return render(request, 'trips/new-question.html', {'form': form})
+    return render(request, 'registration/login.html')
+
+
+def reply_question(request, pk, question_pk):
+    if request.user.is_staff:
+        question = get_object_or_404(Question, Q_trip__pk=pk, pk=question_pk)
+        if request.method == 'POST':
+            form = NewQuestionForm(request.POST)
+            if form.is_valid():
+                question = form.save(commit=False)
+                question.Q_trip = trip
+                question.asked_by = request.user
+                question.save()
+
+                trip_url = reverse('trips:detail', kwargs={'pk': pk, 'question_pk': question_pk})
+
+                return redirect(trip_url)
+        else:
+            form = NewQuestionForm()
+        return render(request, 'trips/new-question.html', {'form': form})
+
+# class NewQuestionView(CreateView):
+#     model = Question
+#     form_class = NewQuestionForm
+#     success_url = reverse_lazy('trips:detail')
+#     template_name = 'new-question.html'
+
+# class NewQuestionView(View):
+#
+#     def post(self, request):
+#         form = QuestionForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('trips:detail')
+#         return render(request, 'new-question.html', {'form': form})
+#
+#
+#     def get(self, request):
+#         form = QuestionForm()
+#         return render(request, 'new-question.html', {'form': form})
 
 def signup(request):
     if request.method=='POST':

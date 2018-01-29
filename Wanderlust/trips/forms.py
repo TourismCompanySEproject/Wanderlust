@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from datetime import date, datetime
 from calendar import monthrange
-
+from .models import Question
 
 class CreditCardField(forms.IntegerField):
     def get_cc_type(self,number):
@@ -134,3 +134,16 @@ class SignUpForm(UserCreationForm, PaymentForm):
         model = User
         fields = ('first_name', 'last_name', 'username', 'email', 'number')
 
+
+class NewQuestionForm(forms.ModelForm):
+    Q_content = forms.CharField(
+        widget=forms.Textarea(
+            attrs={'rows': 5, 'placeholder': 'Leave a comment'}
+        ),
+        max_length=400,
+        help_text='The max length of the text is 400.'
+    )
+
+    class Meta:
+        model = Question
+        fields = ['Q_content']

@@ -5,6 +5,10 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
 from django.db.models import Count
 from datetime import datetime, timezone, date
+from django.utils.html import mark_safe
+from django.utils.text import Truncator
+from markdown import markdown
+
 
 trans_Choices = (
     ('B','Bus'), ('T','Train'), ('P','Plane'), ('S','Ship')
@@ -16,7 +20,7 @@ residence_Choices = (
 
 class Trip(models.Model):
     name = models.CharField(max_length=250)
-    description = models.TextField(max_length=500, null=True)
+    description = models.TextField(max_length=5000, null=True)
 
     origin = models.CharField(max_length=50, default="Cairo")
     destination = models.CharField(max_length=50)
@@ -64,3 +68,7 @@ class Question(models.Model):
 
     def __str__(self):
         return self.Q_content
+
+
+    def get_message_as_markdown(self):
+        return mark_safe(markdown(self.Q_content, safe_mode='escape'))
