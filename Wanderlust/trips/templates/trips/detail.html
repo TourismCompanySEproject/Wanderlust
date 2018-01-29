@@ -60,13 +60,24 @@
             <strong class="text-muted">{{ question.asked_by }}</strong>
           </div>
           <div class="col-6 text-right">
-            <small class="text-muted">{{ question.created_at|naturaltime  }}</small>
+            <small class="text-muted">{{ question.asked_at|naturaltime  }}</small>
           </div>
         </div>
         {{ question.get_message_as_markdown }}
       </div>
     </div>
   {% endfor %}
+<div>
+      <a href="{% url 'trips:new_question' trip.id %}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; add comment </a>
+
+
+
+
+
+
+
+
+
 
 
 </div>

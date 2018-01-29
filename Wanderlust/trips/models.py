@@ -20,7 +20,7 @@ residence_Choices = (
 
 class Trip(models.Model):
     name = models.CharField(max_length=250)
-    description = models.TextField(max_length=500, null=True)
+    description = models.TextField(max_length=5000, null=True)
 
     origin = models.CharField(max_length=50, default="Cairo")
     destination = models.CharField(max_length=50)
