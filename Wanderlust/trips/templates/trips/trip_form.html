@@ -5,14 +5,56 @@
 
 
 {%  block body %}
-    <div class="card-body">
+    <div class="col-lg-2 " ></div>
+            <div class="col-sm-12  col-md-8 col-lg-8 " >
+
+            <div class="card signin-card " style="height: 700px;margin: auto;background-color: #f4f4f4;box-shadow: 2px 2px 5px rgba(0,0,0,.5);-webkit-box-shadow: 2px 2px 5px rgba(0,0,0,.5);-moz-box-shadow: 2px 2px 5px rgba(0,0,0,.5);padding-top: 5px;width: 780px;" >
+
        <h3 class="card-title">Add new trip</h3>
-            <form method="post" novalidate>
-                {%  csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-primary btn-block">Add trip</button>
-            </form>
+            <form method="post" novalidate="">
+                <input type="hidden" name="csrfmiddlewaretoken" value="xvCoivnkMrhFXVtuowgM1GPMUNDTrdxTgfEjfBz1sAj7xYJcKbqzaGlAzpiobYOE">
+                <p><label for="id_name">Name:</label> <input type="text" name="name" maxlength="250" required="" id="id_name"></p>
+<p><label for="id_description">Description:</label> <br><textarea name="description" cols="40" rows="10" maxlength="5000" required="" id="id_description"></textarea></p>
+<p><label for="id_origin">Origin:</label> <input type="text" name="origin" value="Cairo" maxlength="50" required="" id="id_origin"></p>
+<p><label for="id_destination">Destination:</label> <input type="text" name="destination" maxlength="50" required="" id="id_destination"></p>
+<p><label for="id_departing_date">Departing date:</label> <input type="text" name="departing_date" required="" id="id_departing_date"></p>
+<p><label for="id_returning_date">Returning date:</label> <input type="text" name="returning_date" required="" id="id_returning_date"></p>
+<p><label for="id_transportstion">Transportstion:</label> <select name="transportstion" required="" id="id_transportstion">
+  <option value="" selected="">---------</option>
+
+  <option value="B">Bus</option>
+
+  <option value="T">Train</option>
+
+  <option value="P">Plane</option>
+
+  <option value="S">Ship</option>
+
+</select></p>
+<p><label for="id_residence">Residence:</label> <select name="residence" required="" id="id_residence">
+  <option value="" selected="">---------</option>
+
+  <option value="M">Motel</option>
+
+  <option value="T">3 star Hotel</option>
+
+  <option value="F">4 star Hotel</option>
+
+  <option value="V">5 star Hotel</option>
+
+  <option value="N">N/N</option>
+
+</select></p>
+<p><label for="id_adult_price">Adult price:</label> <input type="number" name="adult_price" value="0" min="0" required="" id="id_adult_price"></p>
+<p><label for="id_kid_price">Kid price:</label> <input type="number" name="kid_price" value="0" min="0" required="" id="id_kid_price"></p>
+<p><label for="id_capacity">Capacity:</label> <input type="number" name="capacity" value="0" min="0" required="" id="id_capacity"></p>
+                <button type="submit" style="color: whitesmoke; background-color:green; width:40%; margin: auto;" class="btn btn-primary btn-block">Add trip</button>
+          </form>
    </div>
+    <div class="col-lg-2 "></div>
+                <div>----------------------------------------------------------------</div>
+
+            </div>
 
 
 {%  endblock %}

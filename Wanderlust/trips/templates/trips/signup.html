@@ -3,15 +3,17 @@
 <title>{% block title %}Sign up{% endblock %}</title>
 
 {%  block body %}
+    <div class="col-lg-2 " ></div>
+            <div class="col-sm-12  col-md-8 col-lg-8 " >
 
+            <div class="card signin-card " style="height: 600px;margin: auto;background-color: #f4f4f4;box-shadow: 2px 2px 5px rgba(0,0,0,.5);-webkit-box-shadow: 2px 2px 5px rgba(0,0,0,.5);-moz-box-shadow: 2px 2px 5px rgba(0,0,0,.5);padding-top: 5px;width: 780px;" >
 
-    <div class="card-body">
        <h3 class="card-title">Sign up</h3>
             <form method="post" novalidate="">
                 <input type="hidden" name="csrfmiddlewaretoken" value="IFf633SwUwHcPcnVfUy8zq9knKNm0YUNa7tG5IpbiqmLVxfJejNSr1AhxEEGYYVy">
                 <p><label for="id_first_name">First name:</label> <input style="background-color: #fff3cd" type="text" name="first_name" maxlength="30" id="id_first_name"></p>
 <p><label for="id_last_name">Last name:</label> <input style="background-color: #fff3cd" type="text" name="last_name" maxlength="30" id="id_last_name"></p>
-<p><label for="id_username">Username:</label> <input style="background-color: #fff3cd" type="text" name="username" maxlength="150" autofocus="" required="" id="id_username"> <span class="helptext">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span></p>
+<p><label for="id_username">Username:</label> <input style="background-color: #fff3cd" type="text" name="username" maxlength="150" autofocus="" required="" id="id_username"> <br><span class="helptext">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span></p>
 <p><label for="id_email">Email:</label> <input style="background-color: #fff3cd" type="email" name="email" maxlength="30" required="" id="id_email"></p>
 <p><label for="id_number">Card Number:</label> <input style="background-color: #fff3cd" type="number" name="number" required="" id="id_number"></p>
 <p><label for="id_expiration_0">Expiration:</label> <select name="expiration_0" required="" id="id_expiration_0">
@@ -74,10 +76,14 @@
 </select></p>
 <p><label for="id_ccv_number">CCV Number:</label> <input style="background-color: #fff3cd" type="text" name="ccv_number" size="4" required="" id="id_ccv_number"></p>
 <p><label for="id_password1">Password:</label> <input style="background-color: #fff3cd" type="password" name="password1" required="" id="id_password1"> <span class="helptext"></span></p><ul><li>Your password can't be too similar to your other personal information.</li><li>Your password must contain at least 8 characters.</li><li>Your password can't be a commonly used password.</li><li>Your password can't be entirely numeric.</li></ul><p></p>
-<p><label for="id_password2">Password confirmation:</label> <input style="background-color: #fff3cd" type="password" name="password2" required="" id="id_password2"> <span class="helptext">Enter the same password as before, for verification.</span></p>
-                <button type="submit" style="color: #BDB76B; background-color:#008B8B; width:20%; margin: auto;" class="btn btn-primary btn-block">Create an account</button>
+<p><label for="id_password2">Password confirmation:</label> <input style="background-color: #fff3cd" type="password" name="password2" required="" id="id_password2"> <span class="helptext"><br>Enter the same password as before, for verification.</span></p>
+                <button type="submit" style="color: whitesmoke; background-color:green; width:40%; margin: auto;" class="btn btn-primary btn-block">Create an account</button>
             </form>
    </div>
+    <div class="col-lg-2 "></div>
+                <div>----------------------------------------------------------------</div>
+
+            </div>
 
 
 
