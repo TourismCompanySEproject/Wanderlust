@@ -4,14 +4,93 @@
 
 {%  block body %}
 
-   <div class="card-body">
+
+    <div class="card-body">
        <h3 class="card-title">Sign up</h3>
-            <form method="post" novalidate>
-                {%  csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-primary btn-block">Create an account</button>
+            <form method="post" novalidate="">
+                <input type="hidden" name="csrfmiddlewaretoken" value="IFf633SwUwHcPcnVfUy8zq9knKNm0YUNa7tG5IpbiqmLVxfJejNSr1AhxEEGYYVy">
+                <p><label for="id_first_name">First name:</label> <input style="background-color: #fff3cd" type="text" name="first_name" maxlength="30" id="id_first_name"></p>
+<p><label for="id_last_name">Last name:</label> <input style="background-color: #fff3cd" type="text" name="last_name" maxlength="30" id="id_last_name"></p>
+<p><label for="id_username">Username:</label> <input style="background-color: #fff3cd" type="text" name="username" maxlength="150" autofocus="" required="" id="id_username"> <span class="helptext">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span></p>
+<p><label for="id_email">Email:</label> <input style="background-color: #fff3cd" type="email" name="email" maxlength="30" required="" id="id_email"></p>
+<p><label for="id_number">Card Number:</label> <input style="background-color: #fff3cd" type="number" name="number" required="" id="id_number"></p>
+<p><label for="id_expiration_0">Expiration:</label> <select name="expiration_0" required="" id="id_expiration_0">
+  <option value="1">1</option>
+
+  <option value="2">2</option>
+
+  <option value="3">3</option>
+
+  <option value="4">4</option>
+
+  <option value="5">5</option>
+
+  <option value="6">6</option>
+
+  <option value="7">7</option>
+
+  <option value="8">8</option>
+
+  <option value="9">9</option>
+
+  <option value="10">10</option>
+
+  <option value="11">11</option>
+
+  <option value="12">12</option>
+
+</select>
+<select name="expiration_1" required="" id="id_expiration_1">
+  <option value="2018">2018</option>
+
+  <option value="2019">2019</option>
+
+  <option value="2020">2020</option>
+
+  <option value="2021">2021</option>
+
+  <option value="2022">2022</option>
+
+  <option value="2023">2023</option>
+
+  <option value="2024">2024</option>
+
+  <option value="2025">2025</option>
+
+  <option value="2026">2026</option>
+
+  <option value="2027">2027</option>
+
+  <option value="2028">2028</option>
+
+  <option value="2029">2029</option>
+
+  <option value="2030">2030</option>
+
+  <option value="2031">2031</option>
+
+  <option value="2032">2032</option>
+
+</select></p>
+<p><label for="id_ccv_number">CCV Number:</label> <input style="background-color: #fff3cd" type="text" name="ccv_number" size="4" required="" id="id_ccv_number"></p>
+<p><label for="id_password1">Password:</label> <input style="background-color: #fff3cd" type="password" name="password1" required="" id="id_password1"> <span class="helptext"></span></p><ul><li>Your password can't be too similar to your other personal information.</li><li>Your password must contain at least 8 characters.</li><li>Your password can't be a commonly used password.</li><li>Your password can't be entirely numeric.</li></ul><p></p>
+<p><label for="id_password2">Password confirmation:</label> <input style="background-color: #fff3cd" type="password" name="password2" required="" id="id_password2"> <span class="helptext">Enter the same password as before, for verification.</span></p>
+                <button type="submit" style="color: #BDB76B; background-color:#008B8B; width:20%; margin: auto;" class="btn btn-primary btn-block">Create an account</button>
             </form>
    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
