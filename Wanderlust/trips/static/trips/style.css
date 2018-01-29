@@ -1,3 +1,46 @@
 body{
     background: white url("images/background.jpg");
 }
+.caption-title{
+
+
+
+width: 175px ; height: 50px;
+
+}
+.caption-statuss{
+
+width:175px;  display: block;background-color: red; color:white; margin:0px 0px 0px 0px; ;
+}
+h2.title{
+
+
+    font-size: 20px ;margin-top: 20px; margin-bottom: 10px
+}
+.caption-title {
+
+    display: block;
+    background-color: papayawhip;
+    color: black;
+    width: 175px;
+    height: 50px;
+    margin: 0px 0px 5px;
+}
+#uptrip{
+    background-color: green;
+}
+.thumbnail{ width: 200px ; height: 350px;}
+img.container-img{width: 200px ; height: 100px;}
+
+.thumbnail .caption {
+    padding: 0px 7px;
+    color: #333;
+}
+div.caption-prince{
+
+    padding-top: 30px;
+}
+#caption-price-id{
+       padding-top: 0px;
+
+}

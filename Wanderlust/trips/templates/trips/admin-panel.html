@@ -17,17 +17,18 @@
                     {% if trip.check_time %}
 
                 <div class="col-sm-4 col-lg-2">
-                    <div class="thumbnail" style="width: 200px ; height: 300px;  ">
+                    <div class="thumbnail">
                         <a href="{% url 'trips:detail' trip.id %}">
                             <img style="width: 200px ; height: 100px;" src="{{ trip.trip_image1.url }}" class="img-responsive">
                         </a>
                         <div class="caption">
 
-                            <div class="caption-title" style="width: 175px ; height: 50px;">
+                            <div class="caption-title">
 
-                                <h2 style="font-size: 20px">{{ trip.name }}</h2> <span>Upcoming Trips</span></div>
+                                <h2 class="title" >{{ trip.name }}</h2> </div>
+                            <div class="caption-statuss" id="uptrip" ><span>Upcoming Trips</span></div>
                             <div class="caption-desc" style="width: 175px ; height: 85px;">
-                                <p style="font-size: 12px">helasdlkm apsodasdasd asdasd asd asd asd asdasd  asdasd asd asd asd asdasd asdasd asdasd apsd,as,d aisdasd;, asdpokasdmla,sdqwpdl</p>
+                                <p style="font-size: 12px">{{ trip.description }}</p>
                             </div>
                             <div class="caption-prince">
                                 <h4 style="text-align: right ;"> {{ trip.adult_price }}</h4></div>
@@ -37,17 +38,20 @@
                    {% else %}
 
                 <div class="col-sm-4 col-lg-2" >
-                    <div class="thumbnail" style="width: 200px ; height: 300px;  ">
+                    <div class="thumbnail">
                         <a href="{% url 'trips:detail' trip.id %}">
-                            <img style="width: 200px ; height: 100px;" src="{{ trip.trip_image1.url }}" class="img-responsive">
+                            <img  style="width: 200px ; height: 100px;" src="{{ trip.trip_image1.url }}" class="img-responsive">
                         </a>
-                        <div class="caption">
+                        <div class="caption" >
 
-                            <div class="caption-title" style="width: 175px ; height: 50px;">
+                            <div class="caption-title">
 
-                                <h2 style="font-size: 20px">{{ trip.name }}</h2> <span>Past Trips</span></div>
+                                <h2 class="title">{{ trip.name }}</h2> </div>
+                                <div class="caption-statuss" ><span>Past Trips</span></div>
+
+
                             <div class="caption-desc" style="width: 175px ; height: 85px; ">
-                                <p style="font-size: 12px">helasdlkm apsodasdasd asdasd asd asd asd asdasd  asdasd asd asd asd asdasd asdasd asdasd apsd,as,d aisdasd;, asdpokasdmla,sdqwpdl</p>
+                                <p style="font-size: 12px">{{ trip.description }}</p>
                             </div>
                             <div class="caption-prince">
                                 <h4 style="text-align: right ;"> {{ trip.adult_price }}</h4></div>
@@ -72,12 +76,16 @@
         <ul>
 
             {% for question in questions %}
-                 <li>
+                 <div>
+                    <div>
                      <p>New Questions was asked by {{ question.asked_by }} on Trip</p>
+                        </div>
+                                         <div>
+
                      <a href = "{% url 'trips:detail' question.Q_trip.pk %}"> {{ question.Q_trip }}</a>
                      <p>at: {{ question.asked_at }} </p>
                  <br>
-                 </li>
+                 </div>
             {%  endfor %}
         </ul>
 
