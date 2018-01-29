@@ -6,8 +6,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Wanderlust/trips/static/trips/style.css" afterPath="$PROJECT_DIR$/Wanderlust/trips/static/trips/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Wanderlust/trips/templates/trips/admin-panel.html" afterPath="$PROJECT_DIR$/Wanderlust/trips/templates/trips/admin-panel.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Wanderlust/trips/templates/trips/base.html" afterPath="$PROJECT_DIR$/Wanderlust/trips/templates/trips/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Wanderlust/trips/templates/trips/index.html" afterPath="$PROJECT_DIR$/Wanderlust/trips/templates/trips/index.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -53,8 +51,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Wanderlust/trips/templates/trips/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="21" column="81" lean-forward="false" selection-start-line="21" selection-start-column="81" selection-end-line="21" selection-end-column="81" />
+            <state relative-caret-position="171">
+              <caret line="14" column="42" lean-forward="false" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
               <folding>
                 <element signature="e#99#119#0#HTML" expanded="true" />
                 <element signature="e#357#396#0#HTML" expanded="true" />
@@ -69,8 +67,8 @@
       <file leaf-file-name="admin-panel.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Wanderlust/trips/templates/trips/admin-panel.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="30" column="81" lean-forward="false" selection-start-line="30" selection-start-column="59" selection-end-line="30" selection-end-column="81" />
+            <state relative-caret-position="16">
+              <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding>
                 <element signature="e#162#182#0#HTML" expanded="true" />
                 <element signature="e#505#542#0#HTML" expanded="true" />
@@ -83,6 +81,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Wanderlust/trips/static/trips/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="427">
+              <caret line="47" column="29" lean-forward="false" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Wanderlust/trips/models.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -91,16 +99,6 @@
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Wanderlust/trips/static/trips/style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -145,9 +143,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Wanderlust/trips/templates/trips/base.html" />
-        <option value="$PROJECT_DIR$/Wanderlust/trips/static/trips/style.css" />
-        <option value="$PROJECT_DIR$/Wanderlust/trips/templates/trips/admin-panel.html" />
         <option value="$PROJECT_DIR$/Wanderlust/trips/templates/trips/index.html" />
+        <option value="$PROJECT_DIR$/Wanderlust/trips/templates/trips/admin-panel.html" />
+        <option value="$PROJECT_DIR$/Wanderlust/trips/static/trips/style.css" />
       </list>
     </option>
   </component>
@@ -548,14 +546,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Wanderlust/trips/static/trips/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Wanderlust/trips/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
@@ -566,10 +556,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Wanderlust/trips/static/trips/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="47" column="29" lean-forward="false" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Wanderlust/trips/templates/trips/admin-panel.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="30" column="81" lean-forward="false" selection-start-line="30" selection-start-column="59" selection-end-line="30" selection-end-column="81" />
+        <state relative-caret-position="16">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
             <element signature="e#162#182#0#HTML" expanded="true" />
             <element signature="e#505#542#0#HTML" expanded="true" />
@@ -583,8 +581,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Wanderlust/trips/templates/trips/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="21" column="81" lean-forward="false" selection-start-line="21" selection-start-column="81" selection-end-line="21" selection-end-column="81" />
+        <state relative-caret-position="171">
+          <caret line="14" column="42" lean-forward="false" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
           <folding>
             <element signature="e#99#119#0#HTML" expanded="true" />
             <element signature="e#357#396#0#HTML" expanded="true" />
