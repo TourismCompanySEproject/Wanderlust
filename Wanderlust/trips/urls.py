@@ -34,7 +34,7 @@ urlpatterns = [
     # filter
     url(r'^filter/$', views.TripFilterView.as_view(), name='filter'),
 
-
-
+    # Book
+    url(r'^trip/(?P<pk>[0-9]+)/booking/$', views.ReservationView.as_view(), name='book'),
 
 ]
