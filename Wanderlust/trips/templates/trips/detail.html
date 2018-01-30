@@ -15,10 +15,17 @@
 
 {%  block body %}
     <!-- Trip Details -->
-        <div>
+        <div >
+                <div class="col-sm-4 col-lg-12">
+                    <div class="thumbnail" style="width: 700px ; height: 600px; margin: auto;  ">
 
                      <h1>{{ trip.name }}</h1>
+
+                        <img style="width: 600px ; height: 250px;" src="{{ trip.trip_image1.url }}" class="img-responsive">
+
                      <p>from: {{ trip.origin  }} - to: {{ trip.destination  }}</p>
+                        <p>decription: {{ trip.description }} per</p>
+
                      <p>from: {{ trip.departing_date  }} - to: {{ trip.returning_date  }}</p>
                      <p>Type of transportation: {{ trip.get_transportstion_display }} </p>
                      <p>Type of residence: {{ trip.get_residence_display }} </p>
@@ -28,22 +35,23 @@
     </div>
         <!-- Admin contol -->
         {% if user.is_staff  %}
-        <div>
+        <div class="thumbnail" style="width: 700px ; height: 80px; margin: auto; padding-bottom: 45px;>
             <!-- Delete Trip -->
+
             <form action="{% url 'trips:delete_trip' trip.id %}" method="post" style="display: inline;">
                 {% csrf_token %}
                 <input type="hidden" name="trip_id" value="{{ trip.id }}" />
-                <button type="submit" class="btn btn-default btn-sm">
+                <button style="width: 350px ; height: 30px;" type="submit" class="btn btn-danger">
                     <span class="glyphicon glyphicon-trash"></span>&nbsp; Delete
                 </button>
             </form>
 
             <!-- Update Trip -->
-            <a href="{% url 'trips:trip-update' trip.id %}" class="btn btn-default btn-sm" role="button">
+            <a href="{% url 'trips:trip-update' trip.id %}" class="btn btn-info" role="button" style="width: 350px ; height: 30px;>
                 <span class="glyphicon glyphicon-refresh"></span>&nbsp; Update
             </a>
 
-        </div>
+            </div>
         {% endif %}
         <!-- User Bookin -->
 
@@ -72,6 +80,7 @@
       </div>
     </div>
   {% endfor %}
+<<<<<<< HEAD
 <div>
 {#      <a href="{% url 'trips:new_question' trip.id %}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; add comment </a>#}
     <form class="" role="" method="post" action="{% url 'trips:new_question' trip.id %}">
@@ -90,10 +99,16 @@
 
 
 
+=======
+>>>>>>> 6fe184bf1f79322740b3ac6cec2f2e2b9f5aa1c2
 
-</div>
+<div class="thumbnail" style="width: 700px ; height: 30px; margin: auto; padding-bottom: 20px;>
+      <a href="{% url 'trips:new_question' trip.id %}"><span  class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; add comment </a>
+
+</div >
 
 
+                    </div></div>
 
-
+<div>.....................</div>
 {%  endblock %}

@@ -7,32 +7,78 @@
 {%  block body %}
 
     <div>
-     <form method="get">
-        {{ filter.form.as_p }}
-       <button type="submit">Search</button>
+ <div class="col-sm-4 col-lg-2">
+     <div class="thumbnail" style="width: 230px ; height: 360px; background-color:  #33cccc;  ">
+<form method="get">
+
+        <p><label for="id_origin">Origin:</label> <input type="text" name="origin" id="id_origin"></p>
+<p><label for="id_destination">Destination:</label> <input type="text" name="destination" id="id_destination"></p>
+<p><label for="id_departing_date">Departing date:</label> <input type="text" name="departing_date" id="id_departing_date"></p>
+<p><label for="id_returning_date">Returning date:</label> <input type="text" name="returning_date" id="id_returning_date"></p>
+<p><label for="id_transportstion">Transportstion:</label> <select name="transportstion" id="id_transportstion">
+  <option value="" selected="">---------</option>
+
+  <option value="B">Bus</option>
+
+  <option value="T">Train</option>
+
+  <option value="P">Plane</option>
+
+  <option value="S">Ship</option>
+
+</select></p>
+<p><label for="id_residence">Residence:</label> <select name="residence" id="id_residence">
+  <option value="" selected="">---------</option>
+
+  <option value="M">Motel</option>
+
+  <option value="T">3 star Hotel</option>
+
+  <option value="F">4 star Hotel</option>
+
+  <option value="V">5 star Hotel</option>
+
+  <option value="N">N/N</option>
+
+</select></p>
+       <button style="background-color:  #0000e6; width: 85%;" class="btn btn-info" type="submit">Search</button>
       </form>
-    </div>
+     </div></div>
 
-    <div>
-        <ul>
-            {% for trip in filter.qs %}
+ <div class="albums-container container-fluid" style="height:400px">
+
+    <!-- Trips -->
+    <div class="row "  >
+
+  {% for trip in filter.qs %}
                 {%  if trip.check_time %}
-                 <li>
-                     <a href = "{% url 'trips:detail' trip.id %}"> {{ trip.name }}</a>
-                     <p>from: {{ trip.origin  }} - to: {{ trip.destination  }}</p>
-                     <p>from: {{ trip.departing_date  }} - to: {{ trip.returning_date  }}</p>
-                     <p>Type of transportation: {{ trip.get_transportstion_display }} </p>
-                     <p>Type of residence: {{ trip.get_residence_display }} </p>
-                     <p>Total cost per persons: {{ trip.adult_price }} L.E</p>
-                 <br>
-                 </li>
-                {% endif %}
-            {%  endfor %}
-        </ul>
 
+
+                <div class="col-sm-4 col-lg-2">
+                    <div class="thumbnail" style="width: 200px ; height: 300px;  ">
+                        <a href="{% url 'trips:detail' trip.id %}">
+                            <img style="width: 200px ; height: 100px;" src="{{ trip.trip_image1.url }}" class="img-responsive">
+                        </a>
+                        <div class="caption">
+                            <div class="caption-title" style="width: 175px ; height: 50px;">
+                                <h2 style="font-size: 20px">{{ trip.name }}</h2> </div>
+                  <div class="caption-desc" style="width: 175px ; height: 85px; overflow: auto; ">
+                                <p style="font-size: 12px">{{ trip.description }}</p>
+
+                            </div>
+                            <div class="caption-prince" id="caption-price-id">
+                                <h4 style="text-align: right ;"> {{ trip.adult_price }}</h4>
+                            </div>
+
+
+</div>
+        </div>
+        </div>
+                {% endif %}
+          {%  endfor %}
     </div>
 
-
+    </div>
 
 
 {%  endblock %}

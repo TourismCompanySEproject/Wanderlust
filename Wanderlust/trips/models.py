@@ -8,7 +8,7 @@ from datetime import datetime, timezone, date
 from django.utils.html import mark_safe
 from django.utils.text import Truncator
 from markdown import markdown
-
+from django.urls import reverse
 
 trans_Choices = (
     ('B','Bus'), ('T','Train'), ('P','Plane'), ('S','Ship')
