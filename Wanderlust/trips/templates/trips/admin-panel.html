@@ -17,7 +17,7 @@
                     {% if trip.check_time %}
 
                 <div class="col-sm-4 col-lg-2">
-                    <div class="thumbnail">
+                    <div class="thumbnail" style="width: 200px ; height: 360px;" >
                         <a href="{% url 'trips:detail' trip.id %}">
                             <img style="width: 200px ; height: 100px;" src="{{ trip.trip_image1.url }}" class="img-responsive">
                         </a>
@@ -39,7 +39,7 @@
                    {% else %}
 
                 <div class="col-sm-4 col-lg-2" >
-                    <div class="thumbnail">
+                    <div class="thumbnail" style="width: 200px ; height: 360px;">
                         <a href="{% url 'trips:detail' trip.id %}">
                             <img  style="width: 200px ; height: 100px;" src="{{ trip.trip_image1.url }}" class="img-responsive">
                         </a>

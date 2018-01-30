@@ -33,43 +33,88 @@
                      <p>Kid price: {{ trip.adult_price }} L.E</p>
 
     </div>
+
+
         <!-- Admin contol -->
         {% if user.is_staff  %}
-        <div class="thumbnail" style="width: 700px ; height: 80px; margin: auto; padding-bottom: 45px;>
-            <!-- Delete Trip -->
 
-            <form action="{% url 'trips:delete_trip' trip.id %}" method="post" style="display: inline;">
-                {% csrf_token %}
-                <input type="hidden" name="trip_id" value="{{ trip.id }}" />
-                <button style="width: 350px ; height: 30px;" type="submit" class="btn btn-danger">
-                    <span class="glyphicon glyphicon-trash"></span>&nbsp; Delete
-                </button>
-            </form>
+        <div class="thumbnail" style="width: 700px ; height: 45px;  margin: auto; >
+            <div class="row">
+            <div class="col-lg-1"></div>
 
-            <!-- Update Trip -->
-            <a href="{% url 'trips:trip-update' trip.id %}" class="btn btn-info" role="button" style="width: 350px ; height: 30px;>
-                <span class="glyphicon glyphicon-refresh"></span>&nbsp; Update
-            </a>
+
+
+
+
+             <div class="col-lg-4">
+
+                <!-- Update Trip -->
+                <a href="{% url 'trips:trip-update' trip.id %}" class="btn btn-info" role="button" style="width: 250px ; height: 30px;>
+                    <span class="glyphicon glyphicon-refresh"></span>&nbsp; Update
+                </a></div>
+
+
+                        <div class="col-lg-1"></div>
+
+
+
+
+            <div class= "col-lg-4">
+                        <!-- Delete Trip -->
+
+                <form action="{% url 'trips:delete_trip' trip.id %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="trip_id" value="{{ trip.id }}" />
+                    <button style="width: 250px ; height: 30px;" type="submit" class="btn btn-danger">
+                        <span class="glyphicon glyphicon-trash"></span>&nbsp; Delete
+                    </button>
+                </form> </div>
+
+
+
+                        <div class= "col-lg-2"></div>
+
+
 
             </div>
+        </div>
+
+
+
         {% endif %}
+
+
+
         <!-- User Bookin -->
 
+            <div class="col-sm-4 col-lg-12">
+                    <div class="thumbnail" style="width: 700px ; height: 60px; margin: auto;">
+
             <form class="btn btn-default btn-sm" role="" method="get" action="{% url 'trips:book' trip.id %}">
-                <button type="submit" class="glyphicon glyphicon-book">Book</button>
+                <button style="height: 30px; width: 550px" type="submit" class="btn btn-success">Book</button>
             </form>
+
+
+</div></div>
+
+
 
         <!-- User Questions -->
 <div>
 
 {% for question in trip.question_set.all %}
+
+        <div class="col-sm-4 col-lg-12">
+                    <div class="thumbnail" style="width: 700px ; height: 110px; margin: auto;">
+
     <div class="card mb-2">
       <div class="card-body p-3">
         <div class="row mb-3">
           <div class="col-6">
             <strong class="text-muted">{{ question.asked_by }}</strong>
           </div>
-          <div class="col-6 text-right">
+          <div class="col-6 ">
+
             <small class="text-muted">{{ question.asked_at|naturaltime  }}</small>
           </div>
         </div>
@@ -79,16 +124,35 @@
           {% endif %}
       </div>
     </div>
+
+</div></div>
+
   {% endfor %}
-<<<<<<< HEAD
-<div>
+
+
+
+
+
+
+    <div>
+        <div class="col-sm-4 col-lg-12">
+                    <div class="thumbnail" style="width: 700px ; height: 60px; margin: auto;  ">
 {#      <a href="{% url 'trips:new_question' trip.id %}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; add comment </a>#}
+
+
+
     <form class="" role="" method="post" action="{% url 'trips:new_question' trip.id %}">
         {% csrf_token %}
+
+
+
+
+
         <div class="form-group">
-            <input class=""  name="c" type="text" value="{{ request.POST.c }}" placeholder="Your comment..."/>
+            <input style="height: 45px; width: 350px;" class=""  name="c" type="text" value="{{ request.POST.c }}" placeholder="Your comment..."/>
+                            <button style="height: 45px; width: 125px" type="submit" class="btn btn-success">&nbsp;add comment</button>
+
         </div>
-                <button type="submit" class="btn btn-success">&nbsp;add comment</button>
     </form>
 
 
@@ -96,19 +160,9 @@
 
 
 
-
-
-
-=======
->>>>>>> 6fe184bf1f79322740b3ac6cec2f2e2b9f5aa1c2
-
-<div class="thumbnail" style="width: 700px ; height: 30px; margin: auto; padding-bottom: 20px;>
-      <a href="{% url 'trips:new_question' trip.id %}"><span  class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; add comment </a>
-
-</div >
-
+</div>
 
                     </div></div>
 
-<div>.....................</div>
+    <div class="col-lg-12">.</div>
 {%  endblock %}
