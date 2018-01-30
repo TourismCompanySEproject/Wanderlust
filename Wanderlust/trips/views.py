@@ -37,8 +37,6 @@ def newQuestion(request, pk):
     if request.user.is_authenticated:
         trip = get_object_or_404(Trip, pk=pk)
         if request.method == 'POST':
-            # form = NewQuestionForm()
-            # question = form.save(commit=False)
             question = Question()
             question.Q_content = request.POST.get('c')
             question.Q_trip = trip
@@ -46,8 +44,6 @@ def newQuestion(request, pk):
             question.save()
 
             return redirect(reverse('trips:detail', kwargs={'pk':pk}))
-        # return redirect(reverse('trips:detail', kwargs={'pk': pk}))
-        # return render(request, 'trips/new-question.html', {'form': form})
     return render(request, 'registration/login.html')
 
 
@@ -56,19 +52,15 @@ def reply_question(request, pk, question_pk):
         question = get_object_or_404(Question, Q_trip__pk=pk, pk=question_pk)
         trip = get_object_or_404(Trip ,pk=pk)
         if request.method == 'POST':
-            form = NewQuestionForm(request.POST)
-            if form.is_valid():
-                question = form.save(commit=False)
-                question.Q_trip = trip
-                question.asked_by = request.user
-                question.save()
+            re_question = Question()
+            re_question.Q_content = request.POST.get('c')
+            re_question.Q_trip = trip
+            re_question.reply_to = question_pk
+            re_question.asked_by = request.user
+            re_question.save()
 
-                trip_url = reverse('trips:detail', kwargs={'pk': pk})
-
-                return redirect(trip_url)
-        else:
-            form = NewQuestionForm()
-        return render(request, 'trips/reply-question.html', {'form': form})
+            return redirect(reverse('trips:detail', kwargs={'pk': pk}))
+    return render(request, 'registration/login.html')
 
 # class NewQuestionView(CreateView):
 #     model = Question
@@ -190,7 +182,7 @@ def admin_panel(request):
     else:
         trips = Trip.objects.all()
         questions = Question.objects.all()
-        reservation = Reservation.objects.all()
+        reservations = Reservation.objects.all()
         query = request.GET.get("q")
         if query:
             return render(request, 'trips/admin-panel.html',
@@ -204,4 +196,4 @@ def admin_panel(request):
             return render(request,
                           'trips/admin-panel.html',
                           {'trips' : trips, 'questions':questions,
-                           'reservation': reservation })
+                           'reservations': reservations })

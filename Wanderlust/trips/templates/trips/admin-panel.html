@@ -96,4 +96,24 @@
 
 
 
+<div  >
+
+
+            {% for reservation in reservations %}
+                <div class="col-lg-3">
+                 <div class="thumbnail" id="thumbnail-question" >
+
+                     <p><br>Reservation on Trip: <a href = "{% url 'trips:detail'  <a href = "{% url 'trips:detail' question.Q_trip.pk %}">.Q_trip.pk %}"> {{ reservation.trip }}</a></p>
+
+                     <p>By: {{ reservation.customer }} </p>
+
+                 </div>
+                </div>
+            {%  endfor %}
+
+
+    </div>
+
+
+
 {%  endblock %}

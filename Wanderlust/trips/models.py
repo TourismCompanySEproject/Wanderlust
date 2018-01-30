@@ -60,6 +60,7 @@ class Trip(models.Model):
 
 class Question(models.Model):
     Q_content = models.TextField(max_length=500)
+    reply_to = models.PositiveSmallIntegerField(default='0')
     Q_trip = models.ForeignKey(Trip, on_delete= models.CASCADE)
     asked_by = models.ForeignKey(User, related_name='question', on_delete= models.CASCADE)
     asked_at = models.DateTimeField(auto_now_add= True)
