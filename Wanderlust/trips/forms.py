@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from datetime import date, datetime
 from calendar import monthrange
-from .models import Question
+from .models import Question, Reservation
 
 class CreditCardField(forms.IntegerField):
     def get_cc_type(self,number):
@@ -147,3 +147,11 @@ class NewQuestionForm(forms.ModelForm):
     class Meta:
         model = Question
         fields = ['Q_content']
+
+
+class ReservationForm(forms.ModelForm):
+
+    class Meta:
+        model = Reservation
+        fields = ['number']
+

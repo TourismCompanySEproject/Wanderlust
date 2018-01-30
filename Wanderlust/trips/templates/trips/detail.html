@@ -55,7 +55,9 @@
         {% endif %}
         <!-- User Bookin -->
 
-
+            <form class="btn btn-default btn-sm" role="" method="get" action="{% url 'trips:book' trip.id %}">
+                <button type="submit" class="glyphicon glyphicon-book">Book</button>
+            </form>
 
         <!-- User Questions -->
 <div>
@@ -78,6 +80,27 @@
       </div>
     </div>
   {% endfor %}
+<<<<<<< HEAD
+<div>
+{#      <a href="{% url 'trips:new_question' trip.id %}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; add comment </a>#}
+    <form class="" role="" method="post" action="{% url 'trips:new_question' trip.id %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <input class=""  name="c" type="text" value="{{ request.POST.c }}" placeholder="Your comment..."/>
+        </div>
+                <button type="submit" class="btn btn-success">&nbsp;add comment</button>
+    </form>
+
+
+
+
+
+
+
+
+
+=======
+>>>>>>> 6fe184bf1f79322740b3ac6cec2f2e2b9f5aa1c2
 
 <div class="thumbnail" style="width: 700px ; height: 30px; margin: auto; padding-bottom: 20px;>
       <a href="{% url 'trips:new_question' trip.id %}"><span  class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; add comment </a>
