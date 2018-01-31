@@ -32,26 +32,23 @@
                      <p>Adult price: {{ trip.adult_price }} L.E</p>
                      <p>Kid price: {{ trip.adult_price }} L.E</p>
 
-    </div>
+                    </div>
 
 
-        <!-- Admin contol -->
-        {% if user.is_staff  %}
+                    <!-- Admin contol -->
+                    {% if user.is_staff  %}
 
-        <div class="thumbnail" style="width: 700px ; height: 45px;  margin: auto; >
-            <div class="row">
-            <div class="col-lg-1"></div>
+                    <div class="thumbnail" style="width: 700px ; height: 45px;  margin: auto;">
+                        <div class="row">
+                        <div class="col-lg-1"></div>
 
+                         <div class="col-lg-4">
 
-
-
-
-             <div class="col-lg-4">
-
-                <!-- Update Trip -->
-                <a href="{% url 'trips:trip-update' trip.id %}" class="btn btn-info" role="button" style="width: 250px ; height: 30px;>
-                    <span class="glyphicon glyphicon-refresh"></span>&nbsp; Update
-                </a></div>
+                            <!-- Update Trip -->
+                            <a href="{% url 'trips:trip-update' trip.id %}" class="btn btn-info" role="button" style="width: 250px ; height: 30px;">
+                                <span class="glyphicon glyphicon-refresh"></span>&nbsp; Update
+                            </a>
+                         </div>
 
 
                         <div class="col-lg-1"></div>
