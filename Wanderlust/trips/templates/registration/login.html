@@ -15,13 +15,10 @@
 
             <div  style=" margin: auto; padding: 0px 60px 20px ;background-color: #f4f4f4;box-shadow: 2px 2px 5px rgba(0,0,0,.5);-webkit-box-shadow: 2px 2px 5px rgba(0,0,0,.5);-moz-box-shadow: 2px 2px 5px rgba(0,0,0,.5);" class="card signin-card">
                 <div class="card-block">
-                    <img style="padding: 0 2rem 2rem ;margin: auto;display: block;width: 50%" alt="oxy" src="Wanderlust/trips/static/oxy.png" class="img-fluid signin-img">
+                    <img style="padding: 0 2rem 2rem ;margin: auto;display: block;width: 50%" alt="oxy" src="{{ static 'oxy.png' }}" class="img-fluid signin-img">
                     <form method="post" novalidate="" style="max-width: 350px;margin: auto;" class="sigin-form">
                          {%  csrf_token %}
-                        <div class="form-group">
-
-                            <input name="username" type="text" class="form-control" autofocus="254" required id="id_username" placeholder="Username">
-                        </div>
+                        <div class="form-group"></div>
                         <div class="form-group">
 
                             <input name="password" type="password" class="form-control" required id="id_password" placeholder="Password">
