@@ -21,12 +21,12 @@
                 <p>Customer: {{ form.customer.username }}</p>
 
 
-                        <p>from: {{ trip.departing_date  }} - to: {{ trip.returning_date  }}</p>
+                        <p>from: {{ form.trip.departing_date  }} - to: {{ form.trip.returning_date  }}</p>
                      <p>Type of transportation: {{ trip.get_transportstion_display }} </p>
 
-                     <p>Price: {{ trip.adult_price }} L.E</p>
+                     <p>Price: {{ form.trip.adult_price }} L.E</p>
 
-                <p>Total Price: {{ trip.adult_price }}  L.E</p>
+                <p>Total Price: {{ form.trip.adult_price }}  L.E</p>
 
 
                 <p><label for="id_number">No. of persons:</label>

@@ -132,3 +132,6 @@ MEDIA_URL = '/media/'
 
 LOGIN_REDIRECT_URL = 'trips:index'
 LOGOUT_REDIRECT_URL = 'trips:index'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
