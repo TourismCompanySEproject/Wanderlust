@@ -30,7 +30,9 @@
                      <p>Type of transportation: {{ trip.get_transportstion_display }} </p>
                      <p>Type of residence: {{ trip.get_residence_display }} </p>
                      <p>Adult price: {{ trip.adult_price }} L.E</p>
-                     <p>Reserve: {{ trip.get_no_of_reservation }} L.E</p>
+                        {% if user.is_staff %}
+                     <p>Reserve: {{ trip.get_no_of_reservation }} </p>
+                        {% endif %}
 
 
                     </div>
@@ -87,13 +89,18 @@
 
             <div class="col-sm-4 col-lg-12">
                     <div class="thumbnail" style="width: 700px ; height: 60px; margin: auto;">
+                {% if trip.capacity > trip.get_no_of_reservation %}
+                <form class="btn btn-default btn-sm" role="" method="get" action="{% url 'trips:book' trip.id %}">
+                    <button style="height: 30px; width: 550px" type="submit" class="btn btn-success">Book</button>
+                </form>
+                {% else %}
+                <form class="btn btn-default btn-sm" role="" method="" action="#">
+                    <button style="height: 30px; width: 550px" type="" class="btn btn-success">Book</button>
+                </form>
+                {% endif %}
+                    </div>
+            </div>
 
-            <form class="btn btn-default btn-sm" role="" method="get" action="{% url 'trips:book' trip.id %}">
-                <button style="height: 30px; width: 550px" type="submit" class="btn btn-success">Book</button>
-            </form>
-
-
-</div></div>
 
 
 

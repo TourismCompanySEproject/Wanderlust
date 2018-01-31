@@ -90,8 +90,7 @@ def signup(request):
         form= SignUpForm(request.POST)
         if form.is_valid():
             user= form.save()
-            auth_login(request, user)
-            return redirect('trips:index')
+            return redirect('trips:login')
     else:
         form = SignUpForm()
     return  render(request, 'trips/signup.html', {'form':form})
