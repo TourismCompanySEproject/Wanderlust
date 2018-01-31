@@ -44,7 +44,11 @@ class Trip(models.Model):
         return reverse('trips:detail', kwargs={'pk': self.pk})
 
     def get_no_of_reservation(self):
-        return User.objects.filter(pk = self.pk).count()
+        reserv = Reservation.objects.filter(trip=self)
+        no = 0
+        for res in reserv:
+            no += res.number
+        return no
 
     def check_time(self):
         date_today = date.today()

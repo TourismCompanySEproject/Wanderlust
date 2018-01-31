@@ -206,7 +206,7 @@ def admin_panel(request):
 class UserUpdateView(UpdateView):
     model = User
     template_name = 'registration/update_my_account.html'
-    form_class = SignUpForm
+    fields = ('first_name', 'last_name', 'email',)
     success_url = reverse_lazy('trips:my_account')
 
     def get_object(self):
