@@ -155,3 +155,13 @@ class ReservationForm(forms.ModelForm):
         model = Reservation
         fields = ['number']
 
+class ContactForm(forms.Form):
+    name = forms.CharField(max_length=40)
+    email = forms.EmailField(required=True)
+    topic = forms.CharField(required=True, max_length=50)
+    message = forms.CharField(
+        required=True,
+        widget=forms.Textarea(
+            attrs={'rows': 5, 'placeholder': 'Leave a comment'}
+        ),
+    )

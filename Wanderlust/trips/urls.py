@@ -80,4 +80,9 @@ urlpatterns = [
             template_name='registration/password_change_done.html'),
         name='password_change_done'),
 
+    # contact us
+    url(r'^contact/$', views.contact, name='contact'),
+    # thank you
+    url(r'^contact/thankyou/$', views.thankyou, name='thankyou'),
+
 ]

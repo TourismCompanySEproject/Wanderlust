@@ -4,7 +4,7 @@ from django.views.generic import View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy, reverse
 from .models import Trip, Question, Reservation
-from .forms import SignUpForm, NewQuestionForm, ReservationForm, PaymentForm
+from .forms import SignUpForm, NewQuestionForm, ReservationForm, PaymentForm, ContactForm
 from django.contrib.auth import login as auth_login
 from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.decorators import login_required
@@ -14,6 +14,8 @@ from .filters import TripFilter
 from django_filters.views import FilterView
 from django.http import HttpResponse
 from django.contrib.auth.models import User
+from django.core.mail import send_mail, BadHeaderError
+
 
 class IndexView(generic.ListView):
     template_name = 'trips/index.html'
@@ -125,7 +127,7 @@ class TripUpdate(UpdateView):
     fields = ['name', 'origin','description','destination',
             'departing_date', 'returning_date',
             'transportstion', 'residence',
-            'adult_price' ,'kid_price' ,'capacity']
+            'adult_price' ,'capacity']
 
 class TripDelete(DeleteView):
     model = Trip
@@ -215,3 +217,24 @@ class UserView(generic.ListView):
     model = User
     form_class = SignUpForm
     template_name = 'registration/my_account.html'
+
+
+def contact(request):
+    subject = request.POST.get('topic', '')
+    message = request.POST.get('message', '')
+    from_email = request.POST.get('email', '')
+
+    if subject and message and from_email:
+        try:
+            send_mail(subject, message, from_email, ['Wanderlust.com'])
+        except BadHeaderError:
+            return HttpResponse('Invalid header found.')
+        return render(request, 'trips/thankyou.html')
+    else:
+        return render(request, 'trips/contact.html', {'form': ContactForm()})
+
+    return render(request, 'trips/contact.html', {'form': ContactForm()})
+
+
+def thankyou(request):
+    return render_to_response('trips:thankyou')

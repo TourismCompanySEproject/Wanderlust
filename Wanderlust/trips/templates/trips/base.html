@@ -2,13 +2,15 @@
 <html lang="en">
 
 <head>
-     <meta charset="UTF-8">
-    
+    <meta charset="UTF-8">
+
     <title>{% block title %}Wanderlust{% endblock %}</title>
-{% load widget_tweaks %}
-{% load static %}
-{%  load staticfiles %} {#  To Be edited #}
-    <link rel="shortcut icon" type="image/png" href="{%  static 'oxy.ico' %}"/>
+    {% load widget_tweaks %}
+    {% load static %}
+    {% load staticfiles %} {#  To Be edited #}
+    <link rel="shortcut icon" type="image/png" href="{% static 'oxy.ico' %}"/>
+    <link rel="stylesheet" href="{% static 'trips/bootstrap.min.css' %}">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="{% static 'trips/style.css' %}"/>
@@ -18,17 +20,19 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-     <script src="{% static 'trips/jquery-3.2.1.min.js' %}"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+            integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+            crossorigin="anonymous"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="{% static 'trips/jquery-3.2.1.min.js' %}"></script>
     <script src="{% static 'trips/popper.min.js' %}"></script>
     <script src="{% static 'trips/bootstrap.min.js' %}"></script>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 
     {% block stylesheet %}{% endblock %}
 
@@ -36,7 +40,7 @@
 
 <body style=" display:block ; text-align:center ;overflow: scroll;">
 
-    <nav class="navbar navbar-inverse" style="border-radius: 0">
+<nav class="navbar  navbar-expand-sm" style="border-radius: 0; background-color:#6eddff;">
     <div class="container-fluid">
 
         <!-- Header -->
@@ -48,49 +52,69 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-          <a class="navbar-brand" style="font-family: 'Satisfy', cursive "  href="{% url 'trips:index' %}">Wanderlust</a>
+            <a class="navbar-brand" style="font-family: 'Satisfy', cursive "
+               href="{% url 'trips:index' %}">Wanderlust</a>
         </div>
 
         <!-- items -->
 
-        <div class = "collapse navbar-collapse" id="topNavBar">
+        <div class="collapse navbar-collapse" id="topNavBar">
 
             <form class="navbar-form navbar-left" role="search" method="get" action="#">
-                <div class="form-group"> <input class="searchfield"  name="q" type="text" value="{{ request.GET.q }}" placeholder="Search..."/> </div>
+                <div class="form-group"><input class="searchfield" name="q" type="text" value="{{ request.GET.q }}"
+                                               placeholder="Search..."/></div>
                 <button type="submit" class="btn btn-default">Search</button>
             </form>
 
 
+            <ul class="nav navbar-nav navbar-right">
 
 
-            <ul class="nav navbar-nav navbar-right" >
-                {%  if user.is_staff %}
-                <li class="">
-                    <a href="{% url 'trips:admin_panel' %}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp; Admin Panel </a>
-                </li>
-                <li class="">
-                    <a href="{% url 'trips:create_trip' %}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; New Trip </a>
-                </li>
+                {% if user.is_staff %}
+                    <li class="">
+                        <a href="{% url 'trips:admin_panel' %}"><span class="glyphicon glyphicon-list-alt"
+                                                                      aria-hidden="true"></span>&nbsp; Admin Panel </a>
+                    </li>
+                    <li class="">
+                        <a href="{% url 'trips:create_trip' %}"><span class="glyphicon glyphicon-plus"
+                                                                      aria-hidden="true"></span>&nbsp; New Trip </a>
+                    </li>
                 {% endif %}
                 <li class="">
-                    <a href="{% url 'trips:filter' %}"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span>&nbsp; Filter </a>
+                    <a href="{% url 'trips:filter' %}"><span class="glyphicon glyphicon-filter"
+                                                             aria-hidden="true"></span>&nbsp; Filter </a>
                 </li>
-
-                {%  if user.is_active %}
                 <li>
-                <a class="" href="{% url 'trips:my_account' %}">My account</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainMenu"
+                            aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="mainMenu">
+                        {% if user.is_authenticated %}
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="userMenu"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{ user.username }}
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userMenu">
+                                        <a class="dropdown-item" href="{% url 'trips:my_account' %}">My account</a>
+                                        <a class="dropdown-item" href="{% url 'trips:password_change' %}">Change
+                                            password</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="{% url 'trips:logout' %}">Log out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        {% else %}
+                            <form class="form-inline ml-auto">
+                                <a href="{% url 'trips:login' %}" class="btn btn-outline-secondary">Log in</a>
+                                <a href="{% url 'trips:signup' %}" class="btn btn-primary ml-2">Sign up</a>
+                            </form>
+                        {% endif %}
+                    </div>
+
                 </li>
-                <li class="">
-                    <a href="{% url 'trips:logout' %}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp; {{ user.username }} : Log out </a>
-                </li>
-                {% else %}
-                 <li class="">
-                    <a href="{% url 'trips:login' %}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp; Login </a>
-                </li>
-                {% endif %}
-{#                <li class="">#}
-{#                    <a href="{% url 'trips:signup' %}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp; Sign up </a>#}
-{#                </li>#}
             </ul>
         </div>
 
@@ -98,12 +122,12 @@
 </nav>
 
 
-{%  block body %}
-{%  endblock %}
+{% block body %}
+{% endblock %}
 
-<footer style="background-color:black;
+<footer style="background-color:#6eddff;
     width: 100%;
-    height: 15%;
+    height:-webkit-fit-block;
     right: 0;
     bottom: 0;
     left: 0;
@@ -112,45 +136,44 @@
 margin-top: 200px; ">
 
 
-<div class="container-fluid">
-    <div class="container" >
-        <div class="row">
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
 
-<div class="col-lg-4" style="">
-    <h1>Follow us</h1>
+                <div class="col-lg-4" style="">
+                    <h1>Follow us</h1>
 
-<a href="https://twitter.com/RoyalJordanian" target="_blank"><img src="/-/media/RJ/Media/Footer/Social/twitter.png?h=30&amp;la=en&amp;w=30&amp;hash=A17DF69ADD55A0B2E1A2F88D4C9D38A04419EA26&amp;hash=A17DF69ADD55A0B2E1A2F88D4C9D38A04419EA26" alt="" disablewebedit="False"></a><a href="https://www.facebook.com/RoyalJordanian" target="_blank"><img src="/-/media/RJ/Media/Footer/Social/facebook.png?h=30&amp;la=en&amp;w=30&amp;hash=BE78E164CDAE3FD0DF8BF410CA2D854FADFDAAD3&amp;hash=BE78E164CDAE3FD0DF8BF410CA2D854FADFDAAD3" alt="" disablewebedit="False"></a><a href="http://instagram.com/royaljordanianairlines" target="_blank"><img src="/-/media/RJ/Media/Footer/Social/instagram.png?h=30&amp;la=en&amp;w=30&amp;hash=9BCA1E8F49D03D5B280C4B7A9D314592A330F737&amp;hash=9BCA1E8F49D03D5B280C4B7A9D314592A330F737" alt="" disablewebedit="False"></a><a href="http://www.youtube.com/rjairline" target="_blank"><img src="/-/media/RJ/Media/Footer/Social/youtube.png?h=30&amp;la=en&amp;w=30&amp;hash=438BF0D21ABDE43CE66ECD2D9957CD336F5768BA&amp;hash=438BF0D21ABDE43CE66ECD2D9957CD336F5768BA" alt="" disablewebedit="False"></a></div>
-<div class="col-lg-4">
-   <h1><a>Contact us</a></h1>
+                </div>
+                <div class="col-lg-4">
+                    <h1><a>Contact us</a></h1>
 
 
+                </div>
+                <div class="col-lg-4">
+                    <div class="collapse navbar-collapse" id="topNavBar">
+                        <form class="navbar-form navbar-left" role="" method="post" action="#">
+                            <div class="form-group"><input class="" name="q" type="text"
+                                                           value="{{ request.GET.q }}" placeholder="subscribe..."/>
+                            </div>
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </form>
 
-</div>
-<div class="col-lg-4">
-    <h1> subscribe</h1>
-  <div class = "collapse navbar-collapse" id="topNavBar">
-            <form class="navbar-form navbar-left" role="search" method="get" action="#">
-                <div class="form-group"> <input class="searchfield"  name="q" type="text" value="{{ request.GET.q }}" placeholder="Search..."/> </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
+                    </div>
+                </div>
 
-</div>
+                <div class="row text-center copyright">
+
+
+                    <div class="col-sm-12">
+                        <hr>
+                        © 2018 Wanderlust
+
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="row text-center copyright">
-
-
-
-<div class="col-sm-12">
-    <hr>
-    © 2018 WounderLust
-
-</div>
-        </div>
     </div>
-</div>
-
-</div>
 
 </footer>
 </body>
