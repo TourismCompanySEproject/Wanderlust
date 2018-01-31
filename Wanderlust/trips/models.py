@@ -36,8 +36,6 @@ class Trip(models.Model):
 
     capacity = models.PositiveSmallIntegerField(default=0)
 
-    reservation = models.ManyToManyField(User, blank=True)
-
     trip_image1 = models.FileField(default='', blank=True)
     trip_image2 = models.FileField(default='', blank=True)
     trip_image3 = models.FileField(default='', blank=True)
@@ -62,6 +60,7 @@ class Trip(models.Model):
 
 class Question(models.Model):
     Q_content = models.TextField(max_length=500)
+    reply_to = models.PositiveSmallIntegerField(default='0')
     Q_trip = models.ForeignKey(Trip, on_delete= models.CASCADE)
     asked_by = models.ForeignKey(User, related_name='question', on_delete= models.CASCADE)
     asked_at = models.DateTimeField(auto_now_add= True)
@@ -72,3 +71,11 @@ class Question(models.Model):
 
     def get_message_as_markdown(self):
         return mark_safe(markdown(self.Q_content, safe_mode='escape'))
+
+class Reservation(models.Model):
+    trip = models.ForeignKey(Trip, on_delete = models.CASCADE)
+    customer = models.ForeignKey(User, on_delete= models.CASCADE)
+    number = models.PositiveSmallIntegerField(default=1)
+
+    def __str__(self):
+        return self.trip.name

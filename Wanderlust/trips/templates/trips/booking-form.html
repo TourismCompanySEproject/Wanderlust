@@ -1,0 +1,57 @@
+{%  extends 'trips/base.html' %}
+<title>{% block title %}Trip Booking{% endblock %}</title>
+
+
+{%  block body %}
+
+
+        <div style="margin-top: 4%" class="container signin-container">
+        <div class="row" >
+            <div class="col-lg-3"></div>
+
+            <div class="col-md-12  col-md-8 col-lg-6 " >
+
+            <div  style=" margin: auto; padding: 0px 60px 20px ;background-color: #f4f4f4;box-shadow: 2px 2px 5px rgba(0,0,0,.5);-webkit-box-shadow: 2px 2px 5px rgba(0,0,0,.5);-moz-box-shadow: 2px 2px 5px rgba(0,0,0,.5);" class="card signin-card">
+
+    <div class="card-body" >
+       <h3 class="card-title" >Book</h3>
+            <form  method="post" novalidate>
+                {%  csrf_token %}
+                <p>Trip: {{ form.trip }}</p>
+                <p>Customer: {{ form.customer.username }}</p>
+
+
+                        <p>from: {{ trip.departing_date  }} - to: {{ trip.returning_date  }}</p>
+                     <p>Type of transportation: {{ trip.get_transportstion_display }} </p>
+
+                     <p>Price: {{ trip.adult_price }} L.E</p>
+
+                <p>Total Price: {{ trip.adult_price }}  L.E</p>
+
+
+                <p><label for="id_number">No. of persons:</label>
+                    <input type="number" name="number" value="1" min="1" required="true" id="id_number">
+                </p>
+
+
+
+
+
+                <button type="submit" class="btn btn-primary btn-block">confirm</button>
+                <button type="" class="btn btn-primary btn-block">
+                    <a href="{% url 'trips:detail' form.trip.id %}"></a>
+                    cancel
+                </button>
+            </form>
+
+         </div>
+            </div style="font-size: 1.2rem;text-align: center;display: block;margin-top: 15px;">
+            </div>
+            <div class="col-lg-3"></div>
+
+
+        </div>
+
+    </div>
+
+ {% endblock %}
