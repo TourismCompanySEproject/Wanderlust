@@ -4,14 +4,16 @@ from django.views.generic import View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy, reverse
 from .models import Trip, Question, Reservation
-from .forms import SignUpForm, NewQuestionForm, ReservationForm
+from .forms import SignUpForm, NewQuestionForm, ReservationForm, PaymentForm
 from django.contrib.auth import login as auth_login
 from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from django.db.models import Q
 from .filters import TripFilter
 from django_filters.views import FilterView
 from django.http import HttpResponse
+from django.contrib.auth.models import User
 
 class IndexView(generic.ListView):
     template_name = 'trips/index.html'
@@ -197,3 +199,20 @@ def admin_panel(request):
                           'trips/admin-panel.html',
                           {'trips' : trips, 'questions':questions,
                            'reservations': reservations })
+
+
+#
+# @method_decorator(login_required, name='dispatch')
+class UserUpdateView(UpdateView):
+    model = User
+    template_name = 'registration/update_my_account.html'
+    form_class = SignUpForm
+    success_url = reverse_lazy('trips:my_account')
+
+    def get_object(self):
+        return self.request.user
+
+class UserView(generic.ListView):
+    model = User
+    form_class = SignUpForm
+    template_name = 'registration/my_account.html'

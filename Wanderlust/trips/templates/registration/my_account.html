@@ -1,0 +1,14 @@
+{% extends 'trips/base.html' %}
+
+<title>{% block title %}My account{% endblock %}</title>
+
+{% block body %}
+  <div>
+    <ul>
+        <li>  {{ user.username  }}   </li>
+        <li>  {{ user.email  }}  </li>
+        <li>  {{ user.ccv_number  }}  </li>
+ccv_number
+    </ul>
+  </div>
+{% endblock %}
