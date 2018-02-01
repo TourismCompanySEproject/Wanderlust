@@ -238,3 +238,15 @@ def contact(request):
 
 def thankyou(request):
     return render_to_response('trips:thankyou')
+
+def subscribe(request):
+    email = request.POST.get('e')
+
+    if email:
+        try:
+            send_mail('Newsletter', 'Newsletter test','Wanderlust.com' ,[email] )
+        except BadHeaderError:
+            return HttpResponse('Invalid header found.')
+        return redirect(reverse('trips:index'))
+    else:
+        return redirect(reverse('trips:index'))

@@ -84,5 +84,7 @@ urlpatterns = [
     url(r'^contact/$', views.contact, name='contact'),
     # thank you
     url(r'^contact/thankyou/$', views.thankyou, name='thankyou'),
+    # thank you
+    url(r'^subscribe/$', views.subscribe, name='subscribe'),
 
 ]

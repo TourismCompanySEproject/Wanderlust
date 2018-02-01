@@ -165,3 +165,4 @@ class ContactForm(forms.Form):
             attrs={'rows': 5, 'placeholder': 'Leave a comment'}
         ),
     )
+
