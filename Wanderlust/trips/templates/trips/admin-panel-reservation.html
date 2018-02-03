@@ -1,0 +1,33 @@
+{% extends 'trips/base.html' %}
+
+<title>{% block title %}Admin Panel{% endblock %}</title>
+
+{% block body %}
+
+
+
+
+
+    <div class="albums-container container-fluid" style=" height: -webkit-fit-block; ">
+        {% for reservation in reservations %}
+            <div class="col-lg-3">
+                <div class="thumbnail" id="thumbnail-question">
+
+                    <p><br>Reservation on Trip:
+                        <a href="{% url 'trips:detail' reservation.trip.pk %}  "> {{ reservation.trip }}</a>
+                    </p>
+                    <p>By: {{ reservation.customer }} </p>
+                    <br>
+                    <p> Number of persons:{{ reservation.persons }} </p>
+                    <p>Total cost: {{ reservation.totalPrice }}</p>
+
+                </div>
+            </div>
+        {% endfor %}
+
+
+    </div>
+
+
+
+{% endblock %}

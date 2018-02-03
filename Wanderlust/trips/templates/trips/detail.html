@@ -23,15 +23,15 @@
 
                 <img style="width: 600px ; height: 250px;" src="{{ trip.trip_image1.url }}" class="img-responsive">
 
-                <p>from: {{ trip.origin }} - to: {{ trip.destination }}</p>
-                <p>decription: {{ trip.description }} per</p>
+                <p><strong>from:</strong> {{ trip.origin }} - <strong>to:</strong> {{ trip.destination }}</p>
+                <p>{{ trip.description }}</p>
 
-                <p>from: {{ trip.departing_date }} - to: {{ trip.returning_date }}</p>
-                <p>Type of transportation: {{ trip.get_transportstion_display }} </p>
-                <p>Type of residence: {{ trip.get_residence_display }} </p>
-                <p>Adult price: {{ trip.adult_price }} L.E</p>
+                <p><strong>from:</strong>  {{ trip.departing_date }} - <strong>to:</strong> {{ trip.returning_date }}</p>
+                <p><strong>Type of transportation:</strong> {{ trip.get_transportstion_display }} </p>
+                <p><strong>Type of residence:</strong> {{ trip.get_residence_display }} </p>
+                <p><strong>price:</strong> {{ trip.price }} L.E</p>
                 {% if user.is_staff %}
-                    <p>Reserve: {{ trip.get_no_of_reservation }} </p>
+                    <p><strong>Reserved:</strong> {{ trip.get_no_of_reservation }} </p>
                 {% endif %}
 
 
@@ -86,9 +86,9 @@
                             </button>
                         </form>
                     {% else %}
-                        <form class="btn btn-default btn-sm" role="" method="" action="#">
-                            <button style="height: 30px; width: 550px" type="" class="btn btn-success">Book</button>
-                        </form>
+                        <div>
+                            <button class="btn btn-default btn-sm"  href="trips/full.html" style="height: 30px; width: 550px" type="" class="btn btn-success">Book</button>
+                        </div>
                     {% endif %}
                 </div>
             </div>
@@ -104,11 +104,12 @@
                         <div class="card mb-2">
                             <div class="card-body p-3">
                                 <div class="row mb-3">
-                                    <div class="col-6">
+                                    <div class="col-12">
                                         <strong class="text-muted">{{ question.asked_by }}</strong>
                                         <small class="text-muted">{{ question.asked_at|naturaltime }}</small>
                                     </div>
-                                    <div class="col-6 ">
+                                    <br>
+                                    <div class="col-12 ">
                                         {{ question.get_message_as_markdown }}
                                     </div>
                                 </div>
@@ -124,7 +125,7 @@
                                                             <strong class="text-muted">{{ re_question.asked_by }}</strong>
                                                             <small class="text-muted">{{ re_question.asked_at|naturaltime }}</small>
                                                         </div>
-
+                                                        <br>
                                                         <div class="col-6 ">
                                                             {{ re_question.get_message_as_markdown }}
                                                         </div>

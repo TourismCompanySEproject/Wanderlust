@@ -7,32 +7,28 @@
 
 
 
-    <div style="margin-top: 4%" class="container signin-container">
+    <div style="margin-top: 6% ;margin-bottom:  10%" class="container signin-container">
         <div class="row">
             <div class="col-lg-3"></div>
 
             <div class="col-md-12  col-md-8 col-lg-6 ">
 
-            <div  style=" margin: auto; padding: 0px 60px 20px ;background-color: #f4f4f4;box-shadow: 2px 2px 5px rgba(0,0,0,.5);-webkit-box-shadow: 2px 2px 5px rgba(0,0,0,.5);-moz-box-shadow: 2px 2px 5px rgba(0,0,0,.5);" class="card signin-card">
+            <div  style=" margin: auto; padding: 60px 60px 40px ;background-color: #f4f4f4;box-shadow: 2px 2px 5px rgba(0,0,0,.5);-webkit-box-shadow: 2px 2px 5px rgba(0,0,0,.5);-moz-box-shadow: 2px 2px 5px rgba(0,0,0,.5);" class="card signin-card">
                 <div class="card-block">
-
-                    <img style="padding: 0 2rem 2rem ;margin: auto;display: block;width: 50%" alt="oxy" src="..." class="img-fluid signin-img">
 
                     <form method="post" novalidate="" style="max-width: 350px;margin: auto;" class="sigin-form">
                          {%  csrf_token %}
                         <div class="form-group">
 
                             <input name="username" type="text" class="form-control" autofocus="254" required id="id_username" placeholder="Username">
-
+                        </div>
                         <div class="form-group">
 
                             <input name="password" type="password" class="form-control" required id="id_password" placeholder="Password">
                         </div>
                         <button type="submit" style="color: #ffffff; background-color: #d64829; width: 100%; margin-bottom: 1.2rem;" class="btn singning-btn btn-lg">Sign In</button>
                         <div class="form-check">
-                            <label class="from-check-label">
-                                <input class="from-check-input" type="checkbox"> Remember Me <a href="#">Need Help?</a>
-                            </label>
+
 
                         </div>
 
@@ -40,6 +36,9 @@
                 </div>
             </div>
             <a  style="font-size: 1.2rem;text-align: center;display: block;margin-top: 15px;" href="{% url 'trips:signup'%}">Create New Account</a>
+            </div>
+               </div>
+            <a  style="font-size: 1.2rem;text-align: center;display: block;margin-top: 15px;" href="{% url 'trips:password_reset'%}">Reset Password</a>
             </div>
             <div class="col-lg-3"></div>
 

@@ -1,6 +1,9 @@
 body{
-    background: white url("images/background.jpg");
+    /*background: white url("images/background.jpg");*/
+    background-color: aliceblue;
+
 }
+
 .caption-title{
 
 

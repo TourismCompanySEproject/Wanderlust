@@ -1,0 +1,31 @@
+{% extends 'trips/base.html' %}
+
+<title>{% block title %}Admin Panel{% endblock %}</title>
+
+{% block body %}
+
+<div style="height: 550px">
+    <div class="albums-container container-fluid" style=" height: -webkit-fit-block; ">
+
+        <!-- Trips -->
+        <div class="row ">
+            {% for question in questions %}
+                <div class="col-lg-3">
+                    <div class="thumbnail" id="thumbnail-question">
+
+                        <p><br>New Questions was asked <br> by {{ question.asked_by }}</p>
+
+
+                        <p>on trip: <a href="{% url 'trips:detail' question.Q_trip.pk %}"> {{ question.Q_trip }}</a></p>
+
+                        <p>at: {{ question.asked_at }} </p>
+
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}

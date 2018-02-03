@@ -24,8 +24,17 @@ urlpatterns = [
     # /logout
     url(r'^logout/$', auth_views.logout ,{'next_page': 'trips:index' }, name='logout'),
 
+
+
     # Admin panel
     url(r'^admin_panel/$', views.admin_panel, name='admin_panel'),
+    # Admin panel/Trips
+    url(r'^admin_panel/trips/$', views.admin_panel_trip, name='admin_panel_trip'),
+    # Admin panel/Comment
+    url(r'^admin_panel/comments/$', views.admin_panel_comment, name='admin_panel_comment'),
+    # Admin panel/Reservation
+    url(r'^admin_panel/reservation/$', views.admin_panel_reservation, name='admin_panel_reservation'),
+
     # /trip/add/
     url(r'^create_trip/$', views.TripCreate.as_view(), name='create_trip'),
     # /trip/2/
@@ -33,10 +42,19 @@ urlpatterns = [
     # delete
     url(r'^trip/(?P<pk>[0-9]+)/delete_album/$', views.TripDelete.as_view(), name='delete_trip'),
 
+
+
     # filter
     url(r'^filter/$', views.TripFilterView.as_view(), name='filter'),
+    # Search
+    url(r'^search/$', views.search, name='search'),
+
     # Book
-    url(r'^trip/(?P<pk>[0-9]+)/booking/$', views.ReservationView.as_view(), name='book'),
+    url(r'^trip/(?P<pk>[0-9]+)/booking/$', views.Reservation, name='book'),
+
+
+
+
 
     # user account
     url(r'^account/$', views.UserView.as_view(), name='my_account'),
@@ -79,6 +97,9 @@ urlpatterns = [
         auth_views.PasswordChangeDoneView.as_view(
             template_name='registration/password_change_done.html'),
         name='password_change_done'),
+
+
+
 
     # contact us
     url(r'^contact/$', views.contact, name='contact'),

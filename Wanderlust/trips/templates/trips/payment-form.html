@@ -1,5 +1,5 @@
 {% extends 'trips/base.html' %}
-<title>{% block title %}Trip Booking{% endblock %}</title>
+<title>{% block title %}Payment{% endblock %}</title>
 
 
 {% block body %}
@@ -15,7 +15,7 @@
                      class="card signin-card">
 
                     <div class="card-body">
-                        <h3 class="card-title">Book</h3>
+                        <h3 class="card-title">Pay</h3>
                         <form method="post" novalidate>
                             {% csrf_token %}
                             <p>Trip: {{ form.trip }}</p>
@@ -26,13 +26,10 @@
                             <p>Type of transportation: {{ form.trip.get_transportstion_display }} </p>
 
                             <p>Price: {{ form.trip.price }} L.E per person</p>
-                            <p id="price"></p>
-
-
 
                             {% include 'trips/form.html' %}
 
-                            <button type="submit"  class="btn btn-primary btn-block">confirm</button>
+                            <button type="submit" class="btn btn-primary btn-block">confirm</button>
                             <button type="" class="btn btn-primary btn-block">
                                 <a href="{% url 'trips:detail' form.trip.id %}"></a>
                                 cancel
@@ -49,6 +46,4 @@
 
     </div>
 
-
 {% endblock %}
-

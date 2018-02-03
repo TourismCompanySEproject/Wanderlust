@@ -1,0 +1,80 @@
+{% extends 'trips/base.html' %}
+
+<title>{% block title %}Admin Panel{% endblock %}</title>
+
+{% block body %}
+
+
+
+
+
+    <div class="albums-container container-fluid" style=" height: -webkit-fit-block; ">
+
+        <!-- Trips -->
+        <div class="row ">
+
+            {% for trip in trips %}
+                {% if trip.check_time %}
+
+                    <div class="col-sm-4 col-lg-2">
+                        <div class="thumbnail" style="width: 200px ; height: 360px;">
+                            <a href="{% url 'trips:detail' trip.id %}">
+                                <img style="width: 200px ; height: 100px;" src="{{ trip.trip_image1.url }}"
+                                     class="img-responsive">
+                            </a>
+                            <div class="caption">
+
+                                <div class="caption-title">
+
+                                    <h2 class="title">{{ trip.name }}</h2></div>
+                                <div class="caption-statuss" id="uptrip"><span>Upcoming Trips</span></div>
+                                <div class="caption-desc" style="width: 175px ; height: 85px; overflow: auto">
+                                    <p style="font-size: 12px">{{ trip.description }}</p>
+
+                                </div>
+                                <div class="caption-prince">
+                                    <h4 style="text-align: right ;"> {{ trip.price }}</h4></div>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+
+                    <div class="col-sm-4 col-lg-2">
+                        <div class="thumbnail" style="width: 200px ; height: 360px;">
+                            <a href="{% url 'trips:detail' trip.id %}">
+                                <img style="width: 200px ; height: 100px;" src="{{ trip.trip_image1.url }}"
+                                     class="img-responsive">
+                            </a>
+                            <div class="caption">
+
+                                <div class="caption-title">
+
+                                    <h2 class="title">{{ trip.name }}</h2></div>
+                                <div class="caption-statuss"><span>Past Trips</span></div>
+
+                                <div class="caption-desc" style="width: 175px ; height: 85px; overflow: auto; ">
+                                    <p style="font-size: 12px">{{ trip.description }}</p>
+
+                                </div>
+                                <div class="caption-prince">
+                                    <h4 style="text-align: right ;"> {{ trip.price }}</h4></div>
+
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

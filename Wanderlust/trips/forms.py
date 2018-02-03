@@ -95,7 +95,7 @@ class CCExpField(forms.MultiValueField):
 class PaymentForm(forms.Form):
     number = CreditCardField(required = True, label = "Card Number")
     # holder = forms.CharField(required = True, label = "Card Holder Name",
-    #     max_length = 60)
+    #      max_length = 60)
     expiration = CCExpField(required = True, label = "Expiration")
     ccv_number = forms.IntegerField(required = True, label = "CCV Number",
         max_value = 9999, widget = forms.TextInput(attrs={'size': '4'}))
@@ -149,11 +149,13 @@ class NewQuestionForm(forms.ModelForm):
         fields = ['Q_content']
 
 
-class ReservationForm(forms.ModelForm):
+class ReservationForm(forms.ModelForm, PaymentForm):
+    persons = forms.IntegerField(required = True, label = "Number of persons",
+        max_value = 30, widget = forms.TextInput(attrs={'size': '4'}))
 
     class Meta:
         model = Reservation
-        fields = ['number']
+        fields = ['persons','number']
 
 class ContactForm(forms.Form):
     name = forms.CharField(max_length=40)

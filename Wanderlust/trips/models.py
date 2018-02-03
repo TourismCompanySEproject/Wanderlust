@@ -31,8 +31,7 @@ class Trip(models.Model):
     transportstion = models.CharField(max_length=10, choices=trans_Choices)
     residence = models.CharField(max_length=20, choices=residence_Choices)
 
-    adult_price = models.PositiveSmallIntegerField(default=0)
-    kid_price = models.PositiveSmallIntegerField(default=0)
+    price = models.PositiveSmallIntegerField(default=0)
 
     capacity = models.PositiveSmallIntegerField(default=0)
 
@@ -47,7 +46,7 @@ class Trip(models.Model):
         reserv = Reservation.objects.filter(trip=self)
         no = 0
         for res in reserv:
-            no += res.number
+            no += res.persons
         return no
 
     def check_time(self):
@@ -79,7 +78,8 @@ class Question(models.Model):
 class Reservation(models.Model):
     trip = models.ForeignKey(Trip, on_delete = models.CASCADE)
     customer = models.ForeignKey(User, on_delete= models.CASCADE)
-    number = models.PositiveSmallIntegerField(default=1)
+    persons = models.PositiveSmallIntegerField(default=1)
+    totalprice = models.PositiveSmallIntegerField(default = 0)
 
     def __str__(self):
         return self.trip.name

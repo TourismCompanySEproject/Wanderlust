@@ -36,6 +36,7 @@ class DetailView(generic.DetailView):
     model = Trip
     template_name = 'trips/detail.html'
 
+
 @login_required(redirect_field_name='trips/new-question.html', login_url='trips:login')
 def newQuestion(request, pk):
     if request.user.is_authenticated:
@@ -66,25 +67,15 @@ def reply_question(request, pk, question_pk):
             return redirect(reverse('trips:detail', kwargs={'pk': pk}))
     return render(request, 'registration/login.html')
 
-# class NewQuestionView(CreateView):
-#     model = Question
-#     form_class = NewQuestionForm
-#     success_url = reverse_lazy('trips:detail')
-#     template_name = 'new-question.html'
-
-# class NewQuestionView(View):
-#
-#     def post(self, request):
-#         form = QuestionForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('trips:detail')
-#         return render(request, 'new-question.html', {'form': form})
-#
-#
-#     def get(self, request):
-#         form = QuestionForm()
-#         return render(request, 'new-question.html', {'form': form})
+def search(request):
+    query = request.GET.get('q')
+    if query:
+        return render(request, 'trips/filter.html',{'trips':
+                      Trip.objects.filter(
+                            Q(name__icontains=query) |
+                            Q(destination__icontains=query)
+                                            )}
+                      )
 
 def signup(request):
     if request.method=='POST':
@@ -105,7 +96,9 @@ def auth_login(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return render(request, 'trips/index.html')
+                next = request.POST.get('next', '/')
+                return HttpResponseRedirect(next)
+                # return render(request, 'trips/index.html')
             else:
                 return render(request, 'registration/login.html', {'error_message': 'Your account has been disabled'})
         else:
@@ -115,11 +108,11 @@ def auth_login(request):
 
 class TripCreate(CreateView):
     model = Trip
-    fields = ['name','description',
-              'origin', 'destination',
+    fields = ['name', 'origin','description','destination',
             'departing_date', 'returning_date',
             'transportstion', 'residence',
-            'adult_price' ,'kid_price', 'capacity']
+            'price' ,'capacity',
+            'trip_image1' , 'trip_image2' , 'trip_image3']
 
 
 class TripUpdate(UpdateView):
@@ -127,52 +120,42 @@ class TripUpdate(UpdateView):
     fields = ['name', 'origin','description','destination',
             'departing_date', 'returning_date',
             'transportstion', 'residence',
-            'adult_price' ,'capacity']
+            'price' ,'capacity',
+            'trip_image1' , 'trip_image2' , 'trip_image3']
 
 class TripDelete(DeleteView):
     model = Trip
-    success_url = reverse_lazy('trips:index')
+    success_url = reverse_lazy('trips:admin_panel')
 
 class TripFilterView(FilterView):
     filterset_class = TripFilter
     template_name= 'trips/filter.html'
 
 
-#
-# @login_required
-# def Booking_page(request):
-#     return render_to_response("trips:booking-form.html")
 
-@permission_required('entity.can_delete', login_url='trips:login')
-def Booking(request,pk):
-
-    book = ReservationForm()
-    book.trip = get_object_or_404(Trip ,pk=pk)
-    book.customer = request.user
-    book.number = request.GET.get('n')
-
-    return render_to_response("trips/booking-form.html")
-
-class ReservationView(View):
-
-    def post(self, request, pk):
+@login_required(redirect_field_name='trips/booking-form.html', login_url='trips:login')
+def Reservation(request, pk):
+    if request.method == 'POST':
         form = ReservationForm(request.POST)
         if form.is_valid():
             reservation = form.save(commit=False)
             reservation.trip = get_object_or_404(Trip, pk=pk)
             reservation.customer = request.user
+            reservation.totalprice = reservation.trip.price * reservation.persons
             reservation.save()
 
-            return redirect('trips:detail' , pk)
-        return render(request, 'trips/booking-form.html', {'form': form})
+            return redirect('trips:detail', pk)
 
+        return render(request, 'trips/wrong.html')
 
-    def get(self, request, pk):
+    else:
         form = ReservationForm()
         form.trip = get_object_or_404(Trip, pk=pk)
         form.customer = request.user
 
         return render(request, 'trips/booking-form.html', {'form': form})
+
+
 
 def admin_panel(request):
     if not request.user.is_authenticated:
@@ -185,7 +168,7 @@ def admin_panel(request):
     else:
         trips = Trip.objects.all()
         questions = Question.objects.all()
-        reservations = Reservation.objects.all()
+        # reservations = Reservation.objects.all()
         query = request.GET.get("q")
         if query:
             return render(request, 'trips/admin-panel.html',
@@ -199,7 +182,80 @@ def admin_panel(request):
             return render(request,
                           'trips/admin-panel.html',
                           {'trips' : trips, 'questions':questions,
-                           'reservations': reservations })
+                           # 'reservations': reservations
+                            })
+
+
+def admin_panel_trip(request):
+    if not request.user.is_authenticated:
+        return redirect('trips:login')
+    if not request.user.is_staff:
+        return HttpResponse("<h3> You are not Authorized to view this page.</h3>"
+                            "<br>"
+                            "<a href=/Wanderlust/>return home</a>"
+                            )
+    else:
+        trips = Trip.objects.all()
+        query = request.GET.get("q")
+        if query:
+            return render(request, 'trips/admin-panel.html',
+                          {'trips': trips.objects.filter(
+                              Q(name__icontains=query) |
+                              Q(destination__icontains=query)
+                          )}
+                          )
+        else:
+            return render(request,
+                          'trips/admin-panel-trip.html',
+                          {'trips': trips})
+
+def admin_panel_comment(request):
+    if not request.user.is_authenticated:
+        return redirect('trips:login')
+    if not request.user.is_staff:
+        return HttpResponse("<h3> You are not Authorized to view this page.</h3>"
+                            "<br>"
+                            "<a href=/Wanderlust/>return home</a>"
+                            )
+    else:
+        questions = Question.objects.all()
+        query = request.GET.get("q")
+        if query:
+            return render(request, 'trips/admin-panel.html',
+                          {'trips': trips.objects.filter(
+                              Q(name__icontains=query) |
+                              Q(destination__icontains=query)
+                          )}
+                          )
+
+        else:
+            return render(request,
+                          'trips/admin-panel-comment.html',
+                          {'questions': questions,})
+
+def admin_panel_reservation(request):
+    if not request.user.is_authenticated:
+        return redirect('trips:login')
+    if not request.user.is_staff:
+        return HttpResponse("<h3> You are not Authorized to view this page.</h3>"
+                            "<br>"
+                            "<a href=/Wanderlust/>return home</a>"
+                            )
+    else:
+        reservations = Reservation.objects.all()
+        query = request.GET.get("q")
+        if query:
+            return render(request, 'trips/admin-panel.html',
+                          {'trips': trips.objects.filter(
+                              Q(name__icontains=query) |
+                              Q(destination__icontains=query)
+                          )}
+                          )
+
+        else:
+            return render(request,
+                          'trips/admin-panel-reservation.html',
+                          {'reservations': reservations})
 
 
 #

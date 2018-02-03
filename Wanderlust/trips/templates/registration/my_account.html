@@ -3,12 +3,57 @@
 <title>{% block title %}My account{% endblock %}</title>
 
 {% block body %}
-  <div>
-    <ul>
-        <li>  {{ user.first_name }} {{ user.last_name  }}   </li>
-        <li>  {{ user.username  }}   </li>
-        <li>  {{ user.email  }}  </li>
-        <li>  {{ user. }}  </li>
-    </ul>
-  </div>
+
+
+    <div style="margin-top: 10% ; margin-bottom: 10% ;" class="container signin-container">
+        <div class="row">
+            <div class="col-lg-3"></div>
+
+            <div class="col-md-12  col-md-8 col-lg-6 ">
+
+                <div style=" margin: auto; padding: 40px 60px 20px ;background-color: #f4f4f4;box-shadow: 2px 2px 5px rgba(0,0,0,.5);-webkit-box-shadow: 2px 2px 5px rgba(0,0,0,.5);-moz-box-shadow: 2px 2px 5px rgba(0,0,0,.5);"
+                     class="card signin-card">
+
+                    <div>
+
+                        <p> Full Name: {{ user.first_name }} {{ user.last_name }}   </p>
+                        <p> Username: {{ user.username }}   </p>
+                        <p> Email: {{ user.email }}  </p>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4 col-lg-10">
+
+        <div class="albums-container container-fluid" style=" height: -webkit-fit-block; ">
+
+            {% for reservation in user.reservation_set.all %}
+                <div class="row">
+    <div class="col-lg-5"></div>
+
+                    <div class="col-lg-3">
+                        <div class="thumbnail" id="thumbnail-question">
+
+                            <p><br>Reservation on Trip:
+                                <a href="{% url 'trips:detail' reservation.trip.pk %}  "> {{ reservation.trip }}</a>
+                            </p>
+
+                            <p> Number of persons:{{ reservation.persons }} </p>
+                            <p>Total cost: {{ reservation.totalPrice }}</p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+
 {% endblock %}
